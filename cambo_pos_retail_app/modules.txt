@@ -1,0 +1,5 @@
+Cambo Pos Retail App
+Inventory
+Selling
+Config
+Customer Relationship Management

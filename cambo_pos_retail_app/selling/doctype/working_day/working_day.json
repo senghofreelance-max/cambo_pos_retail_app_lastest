@@ -1,0 +1,154 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2025-04-28 09:27:03.562281",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "general_info_section",
+  "naming_series",
+  "posting_date",
+  "day_of_week",
+  "working_date",
+  "opened_station",
+  "open_by",
+  "column_break_tccj",
+  "is_closed",
+  "closed_station",
+  "summary_section",
+  "total_opening_amount",
+  "system_closing_amount",
+  "actual_closing_amount",
+  "difference",
+  "column_break_cwfv",
+  "note"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Naming Series",
+   "options": "WK-.YYYY.-.MM.-.DD.-.####"
+  },
+  {
+   "fieldname": "posting_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Posting Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "day_of_week",
+   "fieldtype": "Data",
+   "label": "Day Of Week",
+   "read_only": 1
+  },
+  {
+   "fieldname": "working_date",
+   "fieldtype": "Date",
+   "label": "Working Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "opened_station",
+   "fieldtype": "Data",
+   "label": "Opened Station",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_tccj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_closed",
+   "fieldtype": "Check",
+   "label": "Is Closed",
+   "read_only": 1,
+   "set_only_once": 1
+  },
+  {
+   "fieldname": "closed_station",
+   "fieldtype": "Data",
+   "label": "Closed Station",
+   "read_only": 1
+  },
+  {
+   "fieldname": "general_info_section",
+   "fieldtype": "Section Break",
+   "label": "General Info"
+  },
+  {
+   "fieldname": "open_by",
+   "fieldtype": "Data",
+   "label": "Open By"
+  },
+  {
+   "fieldname": "summary_section",
+   "fieldtype": "Section Break",
+   "label": "Summary"
+  },
+  {
+   "fieldname": "total_opening_amount",
+   "fieldtype": "Currency",
+   "label": "Total Opening Amount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "system_closing_amount",
+   "fieldtype": "Currency",
+   "label": "System Closing Amount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "actual_closing_amount",
+   "fieldtype": "Currency",
+   "label": "Actual Closing Amount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "difference",
+   "fieldtype": "Currency",
+   "label": "Difference",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_cwfv",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "note",
+   "fieldtype": "Text",
+   "label": "Note"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-04-28 09:55:06.801474",
+ "modified_by": "Administrator",
+ "module": "Selling",
+ "name": "Working Day",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

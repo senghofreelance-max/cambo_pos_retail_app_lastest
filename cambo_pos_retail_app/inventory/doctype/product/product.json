@@ -1,0 +1,255 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2025-04-18 13:38:18.245070",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "general_info_section",
+  "product_code",
+  "auto_generate_code",
+  "naming_series",
+  "product_name",
+  "product_group",
+  "product_category",
+  "column_break_xfcw",
+  "price",
+  "unit",
+  "photo",
+  "display_photo",
+  "disabled",
+  "new_arrival",
+  "section_break_htkt",
+  "description",
+  "promotion_section",
+  "is_off",
+  "off_value",
+  "column_break_alru",
+  "off_to",
+  "off_from",
+  "barcode_tab",
+  "table_ubzs",
+  "price_tab",
+  "product_prices",
+  "sale_transaction_tab",
+  "history_section",
+  "sale_history"
+ ],
+ "fields": [
+  {
+   "depends_on": "eval:doc.auto_generate_code == 0",
+   "fieldname": "product_code",
+   "fieldtype": "Data",
+   "label": "Product Code / Barcode",
+   "set_only_once": 1
+  },
+  {
+   "fieldname": "product_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Product Name"
+  },
+  {
+   "fieldname": "product_group",
+   "fieldtype": "Link",
+   "label": "Product Group",
+   "options": "Product Category"
+  },
+  {
+   "fieldname": "product_category",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Product Category",
+   "options": "Product Category",
+   "reqd": 1
+  },
+  {
+   "fieldname": "general_info_section",
+   "fieldtype": "Section Break",
+   "label": "General Info"
+  },
+  {
+   "depends_on": "eval:doc.auto_generate_code == 1",
+   "description": "Code template: P-0001",
+   "fieldname": "naming_series",
+   "fieldtype": "Data",
+   "label": "Naming Series"
+  },
+  {
+   "default": "0",
+   "fieldname": "auto_generate_code",
+   "fieldtype": "Check",
+   "label": "Auto Generate Code"
+  },
+  {
+   "fieldname": "column_break_xfcw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "price",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Price"
+  },
+  {
+   "fieldname": "unit",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Unit",
+   "options": "UOM",
+   "reqd": 1
+  },
+  {
+   "fieldname": "photo",
+   "fieldtype": "Attach Image",
+   "hidden": 1,
+   "label": "Photo"
+  },
+  {
+   "fieldname": "display_photo",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "in_list_view": 1,
+   "label": "Display Photo"
+  },
+  {
+   "default": "0",
+   "fieldname": "disabled",
+   "fieldtype": "Check",
+   "label": "Disabled"
+  },
+  {
+   "fieldname": "promotion_section",
+   "fieldtype": "Section Break",
+   "label": "Promotion"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_off",
+   "fieldtype": "Check",
+   "label": "Is Off"
+  },
+  {
+   "fieldname": "off_value",
+   "fieldtype": "Float",
+   "label": "Off Value"
+  },
+  {
+   "fieldname": "off_from",
+   "fieldtype": "Date",
+   "label": "Off From"
+  },
+  {
+   "fieldname": "off_to",
+   "fieldtype": "Date",
+   "label": "Off To"
+  },
+  {
+   "fieldname": "column_break_alru",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "new_arrival",
+   "fieldtype": "Check",
+   "label": "New Arrival"
+  },
+  {
+   "fieldname": "section_break_htkt",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Text Editor",
+   "label": "Description"
+  },
+  {
+   "fieldname": "price_tab",
+   "fieldtype": "Tab Break",
+   "label": "Price"
+  },
+  {
+   "fieldname": "sale_transaction_tab",
+   "fieldtype": "Tab Break",
+   "label": "Sale Transaction"
+  },
+  {
+   "fieldname": "history_section",
+   "fieldtype": "Section Break",
+   "label": "History"
+  },
+  {
+   "fieldname": "sale_history",
+   "fieldtype": "HTML",
+   "label": "Sale History"
+  },
+  {
+   "fieldname": "product_prices",
+   "fieldtype": "Table",
+   "label": "Prices",
+   "options": "Product Price"
+  },
+  {
+   "fieldname": "barcode_tab",
+   "fieldtype": "Tab Break",
+   "label": "Barcode"
+  },
+  {
+   "fieldname": "table_ubzs",
+   "fieldtype": "Table",
+   "label": "Barcode",
+   "options": "Product Barcode"
+  }
+ ],
+ "grid_page_length": 50,
+ "image_field": "photo",
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-04-30 14:36:02.307228",
+ "modified_by": "Administrator",
+ "module": "Inventory",
+ "name": "Product",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Sales Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Sales User",
+   "select": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

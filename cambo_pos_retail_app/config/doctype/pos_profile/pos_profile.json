@@ -1,0 +1,156 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:uniqe_name",
+ "creation": "2025-07-20 07:55:43.970148",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "uniqe_name",
+  "pos_profile_name",
+  "branch",
+  "column_break_ktlm",
+  "invoice_naming_series",
+  "pos_config",
+  "users_section",
+  "employees",
+  "permission_config_tab",
+  "open_cashier_shift_required_password",
+  "open_working_day_required_password",
+  "closed_cashier_shift_required_password",
+  "closed_working_day_required_password",
+  "make_order_required_password",
+  "changed_quantity_required_password",
+  "delete_order_required_password"
+ ],
+ "fields": [
+  {
+   "fieldname": "pos_profile_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "POS Profile Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "uniqe_name",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Name",
+   "unique": 1
+  },
+  {
+   "fieldname": "branch",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Branch",
+   "options": "Branch",
+   "reqd": 1
+  },
+  {
+   "fieldname": "users_section",
+   "fieldtype": "Section Break",
+   "label": "Users"
+  },
+  {
+   "fieldname": "column_break_ktlm",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "invoice_naming_series",
+   "fieldtype": "Data",
+   "label": "Invoice Naming Series"
+  },
+  {
+   "fieldname": "pos_config",
+   "fieldtype": "Link",
+   "label": "POS Config",
+   "options": "POS Config",
+   "reqd": 1
+  },
+  {
+   "fieldname": "employees",
+   "fieldtype": "Table",
+   "options": "POS Profile User",
+   "reqd": 1
+  },
+  {
+   "fieldname": "permission_config_tab",
+   "fieldtype": "Tab Break",
+   "label": "Permission Config"
+  },
+  {
+   "default": "0",
+   "fieldname": "open_cashier_shift_required_password",
+   "fieldtype": "Check",
+   "label": "Open Cashier Shift Required Password"
+  },
+  {
+   "default": "0",
+   "fieldname": "open_working_day_required_password",
+   "fieldtype": "Check",
+   "label": "Open Working Day Required Password"
+  },
+  {
+   "default": "0",
+   "fieldname": "closed_cashier_shift_required_password",
+   "fieldtype": "Check",
+   "label": "Closed Cashier Shift Required Password"
+  },
+  {
+   "default": "0",
+   "fieldname": "closed_working_day_required_password",
+   "fieldtype": "Check",
+   "label": "Closed Working Day Required Password"
+  },
+  {
+   "default": "0",
+   "fieldname": "make_order_required_password",
+   "fieldtype": "Check",
+   "label": "Make Order Required Password"
+  },
+  {
+   "default": "0",
+   "fieldname": "changed_quantity_required_password",
+   "fieldtype": "Check",
+   "label": "Changed Quantity Required Password"
+  },
+  {
+   "default": "0",
+   "fieldname": "delete_order_required_password",
+   "fieldtype": "Check",
+   "label": "Delete Order Required Password"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-08-04 11:03:00.733362",
+ "modified_by": "Administrator",
+ "module": "Config",
+ "name": "POS Profile",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "read": 1,
+   "role": "Guest"
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "pos_profile_name"
+}

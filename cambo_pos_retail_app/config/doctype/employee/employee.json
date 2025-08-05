@@ -1,0 +1,184 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:employee_code",
+ "creation": "2025-08-02 11:27:24.070801",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "general_info_tab",
+  "naming_series",
+  "section_break_jaob",
+  "employee_code",
+  "employee_name",
+  "email",
+  "date_of_birth",
+  "column_break_sick",
+  "photo",
+  "user_info_tab",
+  "allow_login_pos",
+  "column_break_yiqh",
+  "disabled",
+  "section_break_unpb",
+  "username",
+  "password",
+  "user",
+  "column_break_qhcm",
+  "role_profile",
+  "module_profile",
+  "pos_permission_tab",
+  "pos_role"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Naming Series",
+   "options": "EMP-.YYYY.-.####"
+  },
+  {
+   "fieldname": "employee_code",
+   "fieldtype": "Data",
+   "label": "Employee Code"
+  },
+  {
+   "fieldname": "employee_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Employee Name"
+  },
+  {
+   "fieldname": "general_info_tab",
+   "fieldtype": "Tab Break",
+   "label": "General Info"
+  },
+  {
+   "fieldname": "user_info_tab",
+   "fieldtype": "Tab Break",
+   "label": "User Info"
+  },
+  {
+   "fieldname": "username",
+   "fieldtype": "Data",
+   "label": "Username",
+   "mandatory_depends_on": "eval:doc.allow_login_backend || doc.allow_login_pos"
+  },
+  {
+   "fieldname": "column_break_qhcm",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "password",
+   "fieldtype": "Data",
+   "label": "Password",
+   "mandatory_depends_on": "eval:doc.allow_login_backend || doc.allow_login_pos"
+  },
+  {
+   "fieldname": "pos_permission_tab",
+   "fieldtype": "Tab Break",
+   "label": "POS Permission"
+  },
+  {
+   "fieldname": "pos_role",
+   "fieldtype": "Link",
+   "label": "POS Role",
+   "mandatory_depends_on": "eval: doc.allow_login_pos",
+   "options": "POS User Permission"
+  },
+  {
+   "fieldname": "user",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "User",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "role_profile",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Role Profile",
+   "mandatory_depends_on": "eval:doc.allow_login_backend || doc.allow_login_pos",
+   "options": "Role Profile"
+  },
+  {
+   "fieldname": "module_profile",
+   "fieldtype": "Link",
+   "label": "Module Profile",
+   "mandatory_depends_on": "eval:doc.allow_login_backend",
+   "options": "Module Profile"
+  },
+  {
+   "fieldname": "section_break_unpb",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "section_break_jaob",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "date_of_birth",
+   "fieldtype": "Date",
+   "label": "Date Of Birth"
+  },
+  {
+   "default": "0",
+   "fieldname": "disabled",
+   "fieldtype": "Check",
+   "label": "Disabled"
+  },
+  {
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "Email"
+  },
+  {
+   "fieldname": "column_break_yiqh",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "allow_login_pos",
+   "fieldtype": "Check",
+   "label": "Allow Login POS"
+  },
+  {
+   "fieldname": "column_break_sick",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "photo",
+   "fieldtype": "Attach Image",
+   "hidden": 1,
+   "label": "Photo"
+  }
+ ],
+ "grid_page_length": 50,
+ "image_field": "photo",
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-08-03 12:27:20.215138",
+ "modified_by": "Administrator",
+ "module": "Config",
+ "name": "Employee",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -1,0 +1,216 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-04-28 11:00:23.950260",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "product",
+  "product_name",
+  "product_category",
+  "product_group",
+  "price_code",
+  "unit",
+  "mutiplier",
+  "track_inventory",
+  "selling_price",
+  "base_price",
+  "column_break_ofvt",
+  "discount_type",
+  "discount",
+  "quantity",
+  "sub_total",
+  "total_discount",
+  "net_sale",
+  "gross_sale",
+  "total_amount",
+  "cost_info_section",
+  "cost",
+  "column_break_jcdp",
+  "total_cost",
+  "section_break_eeyb",
+  "noted"
+ ],
+ "fields": [
+  {
+   "fieldname": "product",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Product",
+   "options": "Product",
+   "reqd": 1
+  },
+  {
+   "fieldname": "product_category",
+   "fieldtype": "Link",
+   "label": "Product Category",
+   "options": "Product Category",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "product.product_group",
+   "fieldname": "product_group",
+   "fieldtype": "Link",
+   "label": "Product Group",
+   "options": "Product Category",
+   "read_only": 1
+  },
+  {
+   "fieldname": "price_code",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Price Code",
+   "options": "Price Code"
+  },
+  {
+   "columns": 1,
+   "default": "Unit",
+   "fieldname": "unit",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Unit",
+   "options": "UOM",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "selling_price",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Selling Price"
+  },
+  {
+   "fieldname": "column_break_ofvt",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "base_price",
+   "fieldtype": "Currency",
+   "hidden": 1,
+   "label": "Base Price",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "sub_total",
+   "fieldtype": "Currency",
+   "label": "Sub Total",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cost_info_section",
+   "fieldtype": "Section Break",
+   "label": "Cost Info"
+  },
+  {
+   "fieldname": "cost",
+   "fieldtype": "Currency",
+   "label": "Cost",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_jcdp",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_cost",
+   "fieldtype": "Currency",
+   "label": "Total Cost",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_eeyb",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "noted",
+   "fieldtype": "Text",
+   "label": "Noted"
+  },
+  {
+   "default": "0",
+   "fieldname": "track_inventory",
+   "fieldtype": "Check",
+   "label": "Track Inventory",
+   "read_only": 1
+  },
+  {
+   "fieldname": "net_sale",
+   "fieldtype": "Currency",
+   "hidden": 1,
+   "label": "Net Sale",
+   "read_only": 1
+  },
+  {
+   "fieldname": "mutiplier",
+   "fieldtype": "Float",
+   "hidden": 1,
+   "label": "Mutiplier",
+   "precision": "9"
+  },
+  {
+   "default": "Percentage",
+   "fieldname": "discount_type",
+   "fieldtype": "Select",
+   "label": "Discount Type",
+   "options": "Percentage\nAmount"
+  },
+  {
+   "default": "0",
+   "fieldname": "discount",
+   "fieldtype": "Float",
+   "hidden": 1,
+   "label": "Discount"
+  },
+  {
+   "default": "0",
+   "fieldname": "total_discount",
+   "fieldtype": "Currency",
+   "label": "Total Discount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_amount",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Total Amount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "gross_sale",
+   "fieldtype": "Currency",
+   "hidden": 1,
+   "label": "Gross Sale",
+   "read_only": 1
+  },
+  {
+   "fieldname": "quantity",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Quantity"
+  },
+  {
+   "fetch_from": "product.product_name",
+   "fetch_if_empty": 1,
+   "fieldname": "product_name",
+   "fieldtype": "Data",
+   "label": "Product Name"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2025-05-15 13:48:17.197476",
+ "modified_by": "Administrator",
+ "module": "Selling",
+ "name": "Sale Product",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

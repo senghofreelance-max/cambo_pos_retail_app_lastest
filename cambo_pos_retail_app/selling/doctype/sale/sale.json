@@ -1,0 +1,309 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2025-04-28 10:11:51.805719",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "customer_info_section",
+  "customer",
+  "customer_name",
+  "column_break_cicd",
+  "phone",
+  "price_code",
+  "section_break_0pdg",
+  "naming_series",
+  "posting_date",
+  "sale_date",
+  "working_day",
+  "working_date",
+  "amended_from",
+  "column_break_wjvl",
+  "cashier_shift",
+  "sale_products_section",
+  "sale_products",
+  "additional_charge_section",
+  "shipping_and_charge",
+  "section_break_jmsa",
+  "items_count",
+  "total_item_discount",
+  "discountable_amount",
+  "discount_type",
+  "discount",
+  "column_break_quoe",
+  "total_discount_amount",
+  "gross_sale",
+  "net_sale",
+  "sub_total",
+  "additional_charge",
+  "grand_total",
+  "section_break_fdhs",
+  "note"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_0pdg",
+   "fieldtype": "Section Break",
+   "label": "Sale Info"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Sale",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Naming Series",
+   "options": "SO-.YY.MM.DD.-.######"
+  },
+  {
+   "default": "Today",
+   "fieldname": "posting_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Posting Date",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "note",
+   "fieldtype": "Text",
+   "label": "Note"
+  },
+  {
+   "fieldname": "column_break_wjvl",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "cashier_shift",
+   "fieldtype": "Link",
+   "label": "Cashier Shift",
+   "options": "Cashier Shift"
+  },
+  {
+   "fieldname": "working_day",
+   "fieldtype": "Link",
+   "label": "Working Day",
+   "options": "Working Day"
+  },
+  {
+   "columns": 8,
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Customer",
+   "options": "Customer",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "customer.customer_name",
+   "fetch_if_empty": 1,
+   "fieldname": "customer_name",
+   "fieldtype": "Data",
+   "label": "Customer Name"
+  },
+  {
+   "fieldname": "phone",
+   "fieldtype": "Data",
+   "label": "Phone"
+  },
+  {
+   "default": "Today",
+   "fieldname": "sale_date",
+   "fieldtype": "Date",
+   "label": "Sale Date",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "working_day.working_date",
+   "fieldname": "working_date",
+   "fieldtype": "Date",
+   "label": "Working Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_jmsa",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "items_count",
+   "fieldtype": "Int",
+   "label": "Items Count",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_item_discount",
+   "fieldtype": "Float",
+   "label": "Total Item Discount",
+   "non_negative": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_quoe",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "discountable_amount",
+   "fieldtype": "Currency",
+   "hidden": 1,
+   "label": "Discountable Amount",
+   "non_negative": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "total_discount_amount",
+   "fieldtype": "Float",
+   "label": "Total Discount Amount",
+   "non_negative": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "sub_total",
+   "fieldtype": "Currency",
+   "hidden": 1,
+   "label": "Sub Total",
+   "read_only": 1
+  },
+  {
+   "fieldname": "grand_total",
+   "fieldtype": "Currency",
+   "label": "Grand Total",
+   "read_only": 1
+  },
+  {
+   "fieldname": "customer_info_section",
+   "fieldtype": "Section Break",
+   "label": "Customer Info"
+  },
+  {
+   "fieldname": "column_break_cicd",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "price_code",
+   "fieldtype": "Link",
+   "label": "Price Code",
+   "options": "Price Code",
+   "reqd": 1
+  },
+  {
+   "fieldname": "sale_products_section",
+   "fieldtype": "Section Break",
+   "label": "Sale Products"
+  },
+  {
+   "fieldname": "discount_type",
+   "fieldtype": "Select",
+   "label": "Discount Type",
+   "options": "Percentage\nAmount"
+  },
+  {
+   "default": "0",
+   "fieldname": "discount",
+   "fieldtype": "Float",
+   "label": "Discount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "gross_sale",
+   "fieldtype": "Currency",
+   "hidden": 1,
+   "label": "Gross Sale",
+   "read_only": 1
+  },
+  {
+   "fieldname": "net_sale",
+   "fieldtype": "Currency",
+   "hidden": 1,
+   "label": "Net Sale",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "description": "shipping fee or handling charge.",
+   "fieldname": "additional_charge",
+   "fieldtype": "Currency",
+   "label": "Additional Charge",
+   "non_negative": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "sale_products",
+   "fieldtype": "Table",
+   "label": "Products",
+   "options": "Sale Product"
+  },
+  {
+   "fieldname": "additional_charge_section",
+   "fieldtype": "Section Break",
+   "label": "Additional Charge"
+  },
+  {
+   "fieldname": "shipping_and_charge",
+   "fieldtype": "Table",
+   "label": "Shipping and Charge",
+   "options": "Additional Charge"
+  },
+  {
+   "fieldname": "section_break_fdhs",
+   "fieldtype": "Section Break"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2025-05-15 13:51:35.364048",
+ "modified_by": "Administrator",
+ "module": "Selling",
+ "name": "Sale",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Sales Manager",
+   "select": 1,
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "read": 1,
+   "role": "Sales User",
+   "select": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

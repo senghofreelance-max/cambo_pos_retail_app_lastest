@@ -1,0 +1,146 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:role_name",
+ "creation": "2025-08-02 11:32:38.577939",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "role_name",
+  "pos_permmision_section",
+  "open_working_day",
+  "closed_working_day",
+  "open_cashier_shift",
+  "close_cashier_shift",
+  "column_break_hpah",
+  "delete_item",
+  "edit_item",
+  "change_quantity",
+  "edit_invoice",
+  "section_break_bzxr",
+  "print_working_day_report",
+  "print_cashier_shift_report",
+  "print_cashier_shift_invoice_transaction_report",
+  "print_cashier_shift_sale_item_report"
+ ],
+ "fields": [
+  {
+   "fieldname": "role_name",
+   "fieldtype": "Data",
+   "label": "Role Name",
+   "unique": 1
+  },
+  {
+   "fieldname": "pos_permmision_section",
+   "fieldtype": "Section Break",
+   "label": "POS Permmision"
+  },
+  {
+   "default": "0",
+   "fieldname": "open_working_day",
+   "fieldtype": "Check",
+   "label": "Open Working Day"
+  },
+  {
+   "default": "0",
+   "fieldname": "closed_working_day",
+   "fieldtype": "Check",
+   "label": "Closed Working Day"
+  },
+  {
+   "default": "0",
+   "fieldname": "open_cashier_shift",
+   "fieldtype": "Check",
+   "label": "Open Cashier Shift"
+  },
+  {
+   "default": "0",
+   "fieldname": "close_cashier_shift",
+   "fieldtype": "Check",
+   "label": "Close Cashier Shift"
+  },
+  {
+   "default": "0",
+   "fieldname": "delete_item",
+   "fieldtype": "Check",
+   "label": "Delete Item"
+  },
+  {
+   "default": "0",
+   "fieldname": "edit_item",
+   "fieldtype": "Check",
+   "label": "Edit Item"
+  },
+  {
+   "default": "0",
+   "fieldname": "change_quantity",
+   "fieldtype": "Check",
+   "label": "Change Quantity"
+  },
+  {
+   "default": "0",
+   "fieldname": "edit_invoice",
+   "fieldtype": "Check",
+   "label": "Edit  Invoice"
+  },
+  {
+   "fieldname": "section_break_bzxr",
+   "fieldtype": "Section Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "print_working_day_report",
+   "fieldtype": "Check",
+   "label": "Print Working Day Report"
+  },
+  {
+   "default": "0",
+   "fieldname": "print_cashier_shift_report",
+   "fieldtype": "Check",
+   "label": "Print Cashier Shift Report"
+  },
+  {
+   "default": "0",
+   "fieldname": "print_cashier_shift_invoice_transaction_report",
+   "fieldtype": "Check",
+   "label": "Print Cashier Shift Invoice Transaction Report"
+  },
+  {
+   "default": "0",
+   "fieldname": "print_cashier_shift_sale_item_report",
+   "fieldtype": "Check",
+   "label": "Print Cashier Shift Sale Item Report"
+  },
+  {
+   "fieldname": "column_break_hpah",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-08-03 16:05:09.395988",
+ "modified_by": "Administrator",
+ "module": "Config",
+ "name": "POS User Permission",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}
