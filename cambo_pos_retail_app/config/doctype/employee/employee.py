@@ -15,6 +15,7 @@ class Employee(Document):
 	def after_save(self):
 		if not self.employee_code :
 			self.employee_code = self.name
+		frappe.throw(not self.user and self.allow_login_pos and self.is_new())
 		if not self.user and self.allow_login_pos and self.is_new():
 			self.create_new_user_with_password()
 		if not self.is_new() and self.password:

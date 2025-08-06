@@ -12,6 +12,9 @@
   "opened_by",
   "working_day",
   "amended_from",
+  "pos_profile",
+  "terminal",
+  "branch",
   "column_break_wzbj",
   "closed_date",
   "closed_by",
@@ -110,13 +113,31 @@
    "fieldname": "difference",
    "fieldtype": "Currency",
    "label": "Difference"
+  },
+  {
+   "fieldname": "pos_profile",
+   "fieldtype": "Link",
+   "label": "POS Profile",
+   "options": "POS Profile"
+  },
+  {
+   "fieldname": "terminal",
+   "fieldtype": "Link",
+   "label": "Terminal",
+   "options": "Terminal"
+  },
+  {
+   "fieldname": "branch",
+   "fieldtype": "Link",
+   "label": "Branch",
+   "options": "Branch"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-04-28 10:11:23.616091",
+ "modified": "2025-08-06 14:35:49.897149",
  "modified_by": "Administrator",
  "module": "Selling",
  "name": "Cashier Shift",
