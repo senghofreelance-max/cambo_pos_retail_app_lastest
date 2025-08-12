@@ -16,6 +16,9 @@
   "column_break_tccj",
   "is_closed",
   "closed_station",
+  "branch",
+  "pos_profile",
+  "terminal",
   "summary_section",
   "total_opening_amount",
   "system_closing_amount",
@@ -121,12 +124,30 @@
    "fieldname": "note",
    "fieldtype": "Text",
    "label": "Note"
+  },
+  {
+   "fieldname": "branch",
+   "fieldtype": "Link",
+   "label": "Branch",
+   "options": "Branch"
+  },
+  {
+   "fieldname": "pos_profile",
+   "fieldtype": "Link",
+   "label": "POS Profile",
+   "options": "POS Profile"
+  },
+  {
+   "fieldname": "terminal",
+   "fieldtype": "Link",
+   "label": "Terminal",
+   "options": "Terminal"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-04-28 09:55:06.801474",
+ "modified": "2025-08-06 21:25:23.473810",
  "modified_by": "Administrator",
  "module": "Selling",
  "name": "Working Day",

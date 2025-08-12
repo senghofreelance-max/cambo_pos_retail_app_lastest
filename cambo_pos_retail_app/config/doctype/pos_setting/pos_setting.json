@@ -1,0 +1,42 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-08-08 11:15:17.994865",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "default_user_avatar"
+ ],
+ "fields": [
+  {
+   "fieldname": "default_user_avatar",
+   "fieldtype": "Attach Image",
+   "label": "Default User Avatar"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2025-08-08 11:16:15.562947",
+ "modified_by": "Administrator",
+ "module": "Config",
+ "name": "POS Setting",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

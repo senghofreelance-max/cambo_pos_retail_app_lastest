@@ -68,10 +68,10 @@
    "fieldtype": "Column Break"
   },
   {
+   "depends_on": "eval: doc.is_new==true",
    "fieldname": "password",
    "fieldtype": "Data",
-   "label": "Password",
-   "mandatory_depends_on": "eval:doc.allow_login_backend || doc.allow_login_pos"
+   "label": "Password"
   },
   {
    "fieldname": "pos_permission_tab",
@@ -157,7 +157,7 @@
  "image_field": "photo",
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-08-03 12:27:20.215138",
+ "modified": "2025-08-06 21:19:02.744277",
  "modified_by": "Administrator",
  "module": "Config",
  "name": "Employee",

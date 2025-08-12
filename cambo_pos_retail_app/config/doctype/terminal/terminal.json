@@ -6,19 +6,59 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "terminal_name"
+  "terminal_name",
+  "terminal_button_tab",
+  "home_button_section",
+  "show_working_day_button",
+  "show_cashier_shift_button",
+  "show_customer_button",
+  "show_cash_drawer_button"
  ],
  "fields": [
   {
    "fieldname": "terminal_name",
    "fieldtype": "Data",
    "label": "Terminal Name"
+  },
+  {
+   "fieldname": "terminal_button_tab",
+   "fieldtype": "Tab Break",
+   "label": "Terminal Button"
+  },
+  {
+   "fieldname": "home_button_section",
+   "fieldtype": "Section Break",
+   "label": "Home Button"
+  },
+  {
+   "default": "0",
+   "fieldname": "show_working_day_button",
+   "fieldtype": "Check",
+   "label": "Show Working Day Button"
+  },
+  {
+   "default": "0",
+   "fieldname": "show_cashier_shift_button",
+   "fieldtype": "Check",
+   "label": "Show Cashier Shift Button"
+  },
+  {
+   "default": "0",
+   "fieldname": "show_customer_button",
+   "fieldtype": "Check",
+   "label": "Show Customer Button"
+  },
+  {
+   "default": "0",
+   "fieldname": "show_cash_drawer_button",
+   "fieldtype": "Check",
+   "label": "Show Cash Drawer Button"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-07-28 12:36:36.144043",
+ "modified": "2025-08-09 09:34:29.610801",
  "modified_by": "Administrator",
  "module": "Config",
  "name": "Terminal",
