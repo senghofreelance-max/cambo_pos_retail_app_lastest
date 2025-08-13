@@ -5,20 +5,68 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "default_user_avatar"
+  "default_user_avatar",
+  "can_open_day_before",
+  "can_open_day_after",
+  "currency_info_tab",
+  "main_currency",
+  "change_currency",
+  "column_break_nbpm",
+  "second_currency"
  ],
  "fields": [
   {
    "fieldname": "default_user_avatar",
    "fieldtype": "Attach Image",
    "label": "Default User Avatar"
+  },
+  {
+   "default": "1",
+   "description": "This allow POS can open day after today",
+   "fieldname": "can_open_day_before",
+   "fieldtype": "Int",
+   "label": "Can open Day Before"
+  },
+  {
+   "default": "1",
+   "description": "This allow POS can open day before today",
+   "fieldname": "can_open_day_after",
+   "fieldtype": "Int",
+   "label": "Can Open Day After"
+  },
+  {
+   "fieldname": "currency_info_tab",
+   "fieldtype": "Tab Break",
+   "label": "Currency Info"
+  },
+  {
+   "fieldname": "main_currency",
+   "fieldtype": "Link",
+   "label": "Main Currency",
+   "options": "Currency"
+  },
+  {
+   "fieldname": "column_break_nbpm",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "second_currency",
+   "fieldtype": "Link",
+   "label": "Second Currency",
+   "options": "Currency"
+  },
+  {
+   "fieldname": "change_currency",
+   "fieldtype": "Link",
+   "label": "Change Currency",
+   "options": "Currency"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2025-08-08 11:16:15.562947",
+ "modified": "2025-08-13 19:21:12.895041",
  "modified_by": "Administrator",
  "module": "Config",
  "name": "POS Setting",

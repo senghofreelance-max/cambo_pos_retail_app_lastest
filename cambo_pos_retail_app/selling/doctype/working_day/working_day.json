@@ -9,9 +9,10 @@
   "general_info_section",
   "naming_series",
   "posting_date",
+  "opened_date",
   "day_of_week",
   "working_date",
-  "opened_station",
+  "opened_terminal",
   "open_by",
   "column_break_tccj",
   "is_closed",
@@ -50,14 +51,9 @@
   {
    "fieldname": "working_date",
    "fieldtype": "Date",
+   "in_list_view": 1,
    "label": "Working Date",
    "reqd": 1
-  },
-  {
-   "fieldname": "opened_station",
-   "fieldtype": "Data",
-   "label": "Opened Station",
-   "read_only": 1
   },
   {
    "fieldname": "column_break_tccj",
@@ -129,25 +125,42 @@
    "fieldname": "branch",
    "fieldtype": "Link",
    "label": "Branch",
-   "options": "Branch"
+   "options": "Branch",
+   "set_only_once": 1
   },
   {
    "fieldname": "pos_profile",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "POS Profile",
-   "options": "POS Profile"
+   "options": "POS Profile",
+   "set_only_once": 1
   },
   {
    "fieldname": "terminal",
    "fieldtype": "Link",
    "label": "Terminal",
-   "options": "Terminal"
+   "options": "Terminal",
+   "set_only_once": 1
+  },
+  {
+   "fieldname": "opened_terminal",
+   "fieldtype": "Data",
+   "label": "Opened Terminal",
+   "read_only": 1
+  },
+  {
+   "fieldname": "opened_date",
+   "fieldtype": "Datetime",
+   "in_list_view": 1,
+   "label": "Opened Date",
+   "read_only": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-08-06 21:25:23.473810",
+ "modified": "2025-08-13 18:26:25.393274",
  "modified_by": "Administrator",
  "module": "Selling",
  "name": "Working Day",
@@ -165,9 +178,30 @@
    "role": "System Manager",
    "share": 1,
    "write": 1
+  },
+  {
+   "create": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Sales User",
+   "select": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Sales Manager",
+   "select": 1,
+   "write": 1
   }
  ],
  "row_format": "Dynamic",
+ "search_fields": "working_date,pos_profile",
  "sort_field": "creation",
  "sort_order": "DESC",
  "states": [],

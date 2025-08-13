@@ -89,6 +89,7 @@ def get_pos_config_info(pos_profile,terminal):
     terminal_doc  =frappe.get_doc("Terminal",terminal)
     pos_setting= frappe.get_single("POS Setting")
     pos_profile_response = {
+                "name":pos_profile_doc.get("name"),
                 "pos_profile_name":pos_profile_doc.get("pos_profile_name"),
                 "pos_config":pos_profile_doc.get("pos_config"),
                 "permission_config":[ {"label":item.get("label"),"fieldname":item.get("fieldname"),"value":pos_profile_doc.get(item.get("fieldname"))}  for item in pos_profile_meta.get("fields") if  item.get("fieldtype") == "Check"  ],
@@ -113,6 +114,10 @@ def get_pos_config_info(pos_profile,terminal):
                 },
             "pos_setting":{
                 "default_user_avatar":pos_setting.get("default_user_avatar"),
+                "can_open_day_before":pos_setting.get("can_open_day_before"),
+                "can_open_day_after":pos_setting.get("can_open_day_after"),
+                "main_currency":pos_setting.get("main_currency"),
+                "second_currency":pos_setting.get("second_currency"),
 
             }
             

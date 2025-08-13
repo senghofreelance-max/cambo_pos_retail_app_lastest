@@ -124,7 +124,7 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-08-04 11:03:00.733362",
+ "modified": "2025-08-13 14:51:54.190602",
  "modified_by": "Administrator",
  "module": "Config",
  "name": "POS Profile",
@@ -149,6 +149,7 @@
   }
  ],
  "row_format": "Dynamic",
+ "show_title_field_in_link": 1,
  "sort_field": "creation",
  "sort_order": "DESC",
  "states": [],
