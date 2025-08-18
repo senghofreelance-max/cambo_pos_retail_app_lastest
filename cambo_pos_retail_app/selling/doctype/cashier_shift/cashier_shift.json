@@ -21,7 +21,7 @@
   "is_closed",
   "note",
   "detail_section",
-  "table_sszd",
+  "shift_detail",
   "summary_section",
   "total_opening_amount",
   "total_close_amount",
@@ -148,12 +148,12 @@
   },
   {
    "fieldname": "detail_section",
-   "fieldtype": "Section Break",
-   "label": "Detail"
+   "fieldtype": "Section Break"
   },
   {
-   "fieldname": "table_sszd",
+   "fieldname": "shift_detail",
    "fieldtype": "Table",
+   "label": "Detail",
    "options": "Cashier Shift Detail"
   }
  ],
@@ -161,7 +161,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-08-13 18:39:35.219330",
+ "modified": "2025-08-15 13:56:59.291676",
  "modified_by": "Administrator",
  "module": "Selling",
  "name": "Cashier Shift",

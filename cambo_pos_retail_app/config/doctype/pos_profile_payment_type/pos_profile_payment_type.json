@@ -1,0 +1,130 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-08-15 13:27:28.836435",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "payment_type",
+  "payment_type_name",
+  "symbol",
+  "data_lcnr",
+  "column_break_tnix",
+  "currency",
+  "exchange_rate_value",
+  "section_break_scsw",
+  "default_payment",
+  "allow_change",
+  "is_single_payment",
+  "allow_in_cash_float",
+  "column_break_miub",
+  "extra_fee",
+  "fee_rate"
+ ],
+ "fields": [
+  {
+   "fieldname": "payment_type",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Payment Type",
+   "options": "Payment Type"
+  },
+  {
+   "fetch_from": "payment_type.currency",
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "label": "Currency",
+   "options": "Currency"
+  },
+  {
+   "default": "0",
+   "fieldname": "allow_change",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Allow Change"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_single_payment",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Is Single Payment"
+  },
+  {
+   "fieldname": "column_break_tnix",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_scsw",
+   "fieldtype": "Section Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "default_payment",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Is Default Payment"
+  },
+  {
+   "fieldname": "column_break_miub",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "extra_fee",
+   "fieldtype": "Check",
+   "label": "Extra Fee"
+  },
+  {
+   "fieldname": "fee_rate",
+   "fieldtype": "Float",
+   "label": "Fee Rate"
+  },
+  {
+   "fetch_from": "currency.symbol",
+   "fieldname": "symbol",
+   "fieldtype": "Data",
+   "label": "Symbol"
+  },
+  {
+   "default": "0",
+   "fieldname": "allow_in_cash_float",
+   "fieldtype": "Check",
+   "label": "Allow In Cash Float"
+  },
+  {
+   "fetch_from": "payment_type.payment_type_name",
+   "fieldname": "payment_type_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Payment Type Name",
+   "options": "Payment Type"
+  },
+  {
+   "fieldname": "exchange_rate_value",
+   "fieldtype": "Float",
+   "label": "Exchange Rate Value"
+  },
+  {
+   "fetch_from": "currency.custom_locale",
+   "fieldname": "data_lcnr",
+   "fieldtype": "Data",
+   "hidden": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2025-08-18 10:38:58.708495",
+ "modified_by": "Administrator",
+ "module": "Config",
+ "name": "POS Profile Payment Type",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

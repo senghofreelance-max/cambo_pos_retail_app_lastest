@@ -19,7 +19,7 @@ def open_working_day(working_day):
 	
 	# doc = frappe.get_doc("Working Day")
 	if not working_day.get("working_date"):
-		frappe.throw(_("Please select opened date",title="Invalid Data",exc=frappe.ValidationError))
+		frappe.throw(_("Please select working date"),title="Invalid Data",exc=frappe.ValidationError)
 
 	doc = frappe.get_doc({
     'doctype': working_day.get("doctype"),
@@ -39,11 +39,12 @@ def open_working_day(working_day):
 
 
 @frappe.whitelist()
-def get_current_shift(branch,pos_profile):
-	cashier_shift = frappe.get_doc("Cashier Shift",{'is_closed': 0,"branch":branch,"pos_profile":pos_profile})
-	working_day = frappe.get_doc("Working Day",cashier_shift.get("working_day"))
+def get_current_working_day(branch,pos_profile):
+	working_day_name=frappe.db.get_value("Working Day",{'is_closed': 0,"branch":branch,"pos_profile":pos_profile})
+	if working_day_name:
+		working_day = frappe.get_doc("Working Day",working_day_name)
+		return working_day
+	# frappe.throw("Working Day not found")
+	# working_day = frappe.get_doc("Working Day",{},)
 	
-	return {
-		"cashier_shift":cashier_shift,
-		"working_day":working_day
-	}
+	

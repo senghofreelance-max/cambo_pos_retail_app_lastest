@@ -98,6 +98,8 @@ def get_pos_config_info(pos_profile,terminal):
                     "login_background":pos_config_doc.get("login_background"),
                     "home_background":pos_config_doc.get("home_background")
                 },
+                "payment_types":pos_profile_doc.get("payment_types")
+
                 
             }
     
@@ -118,6 +120,7 @@ def get_pos_config_info(pos_profile,terminal):
                 "can_open_day_after":pos_setting.get("can_open_day_after"),
                 "main_currency":pos_setting.get("main_currency"),
                 "second_currency":pos_setting.get("second_currency"),
+                "pos_date_format":pos_setting.get("pos_date_format"),
 
             }
             

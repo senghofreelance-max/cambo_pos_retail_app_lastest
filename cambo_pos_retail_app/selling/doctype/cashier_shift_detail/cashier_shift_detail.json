@@ -6,13 +6,27 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "column_break_pgxi",
   "payment_type",
-  "currency",
-  "input_amount",
+  "section_break_kida",
+  "column_break_pgxi",
+  "input_opened_amount",
   "symbol",
-  "total_amount",
-  "exchange_rage"
+  "locale",
+  "exchange_rage",
+  "total_opened_amount",
+  "closed_information_column",
+  "input_closed_amount",
+  "total_closed_amount",
+  "difference_amount",
+  "section_break_odzp",
+  "column_break_mxad",
+  "main_currency",
+  "main_currency_formatter",
+  "main_currency_symbol",
+  "column_break_nyxy",
+  "secondary_currency",
+  "secondary_currency_formatter",
+  "secondary_currency_symbol"
  ],
  "fields": [
   {
@@ -24,29 +38,10 @@
    "reqd": 1
   },
   {
-   "fieldname": "currency",
-   "fieldtype": "Link",
-   "label": "Currency",
-   "options": "Currency"
-  },
-  {
-   "fieldname": "input_amount",
-   "fieldtype": "Float",
-   "in_list_view": 1,
-   "label": "Input Amount",
-   "non_negative": 1,
-   "reqd": 1
-  },
-  {
+   "fetch_from": "currency.symbol",
    "fieldname": "symbol",
    "fieldtype": "Data",
    "label": "Symbol"
-  },
-  {
-   "fieldname": "total_amount",
-   "fieldtype": "Currency",
-   "in_list_view": 1,
-   "label": "Total Amount"
   },
   {
    "fieldname": "exchange_rage",
@@ -57,13 +52,106 @@
   {
    "fieldname": "column_break_pgxi",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_mxad",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "main_currency",
+   "fieldtype": "Data",
+   "label": "Main Currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "main_currency_formatter",
+   "fieldtype": "Data",
+   "label": "Main Currency Formatter",
+   "read_only": 1
+  },
+  {
+   "fieldname": "main_currency_symbol",
+   "fieldtype": "Data",
+   "label": "Main Currency Symbol",
+   "read_only": 1
+  },
+  {
+   "fieldname": "secondary_currency",
+   "fieldtype": "Data",
+   "label": "Secondary Currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "secondary_currency_formatter",
+   "fieldtype": "Data",
+   "label": "Secondary Currency Formatter",
+   "read_only": 1
+  },
+  {
+   "fieldname": "secondary_currency_symbol",
+   "fieldtype": "Data",
+   "label": "Secondary Currency Symbol",
+   "read_only": 1
+  },
+  {
+   "fieldname": "input_opened_amount",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Input Opened Amount",
+   "non_negative": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "total_opened_amount",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Total Opened Amount"
+  },
+  {
+   "fieldname": "closed_information_column",
+   "fieldtype": "Column Break",
+   "label": "Closed Information"
+  },
+  {
+   "fieldname": "input_closed_amount",
+   "fieldtype": "Float",
+   "label": "Input Closed Amount"
+  },
+  {
+   "fieldname": "total_closed_amount",
+   "fieldtype": "Currency",
+   "label": "Total Closed Amount"
+  },
+  {
+   "fieldname": "difference_amount",
+   "fieldtype": "Currency",
+   "label": "Difference Amount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_odzp",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_nyxy",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_kida",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fetch_from": "currency.symbol",
+   "fieldname": "locale",
+   "fieldtype": "Data",
+   "label": "Locale"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2025-08-06 16:19:31.921361",
+ "modified": "2025-08-18 12:07:28.898453",
  "modified_by": "Administrator",
  "module": "Selling",
  "name": "Cashier Shift Detail",

@@ -6,13 +6,16 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "date",
+  "column_break_jqwi",
+  "branch",
   "section_break_mi3o",
   "from",
-  "date",
+  "rate",
+  "amended_from",
   "column_break_wvjj",
   "to",
-  "rate",
-  "amended_from"
+  "exchange_value"
  ],
  "fields": [
   {
@@ -32,35 +35,61 @@
   {
    "fieldname": "from",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "From",
-   "options": "Currency"
+   "options": "Currency",
+   "reqd": 1
   },
   {
    "fieldname": "to",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "To",
-   "options": "Currency"
+   "options": "Currency",
+   "reqd": 1
   },
   {
    "fieldname": "date",
    "fieldtype": "Date",
-   "label": "Date"
+   "in_list_view": 1,
+   "label": "Date",
+   "reqd": 1
   },
   {
    "fieldname": "rate",
-   "fieldtype": "Currency",
-   "label": "Rate"
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Rate",
+   "reqd": 1
   },
   {
    "fieldname": "column_break_wvjj",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "exchange_value",
+   "fieldtype": "Float",
+   "label": "Exchange Value",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_jqwi",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "branch",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Branch",
+   "options": "Branch",
+   "reqd": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-08-13 19:26:35.746379",
+ "modified": "2025-08-15 18:30:48.283556",
  "modified_by": "Administrator",
  "module": "Config",
  "name": "Exchange Rate",

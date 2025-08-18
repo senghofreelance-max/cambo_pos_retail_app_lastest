@@ -8,11 +8,13 @@
   "default_user_avatar",
   "can_open_day_before",
   "can_open_day_after",
+  "pos_date_format",
   "currency_info_tab",
   "main_currency",
   "change_currency",
   "column_break_nbpm",
-  "second_currency"
+  "second_currency",
+  "base_currency"
  ],
  "fields": [
   {
@@ -60,13 +62,26 @@
    "fieldtype": "Link",
    "label": "Change Currency",
    "options": "Currency"
+  },
+  {
+   "default": "dd-MM-yyyy",
+   "fieldname": "pos_date_format",
+   "fieldtype": "Select",
+   "label": "POS Date Format",
+   "options": "dd-MM-yyyy\ndd-MMM-yyyy"
+  },
+  {
+   "fieldname": "base_currency",
+   "fieldtype": "Link",
+   "label": "Base Currency",
+   "options": "Currency"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2025-08-13 19:21:12.895041",
+ "modified": "2025-08-15 15:22:41.415578",
  "modified_by": "Administrator",
  "module": "Config",
  "name": "POS Setting",

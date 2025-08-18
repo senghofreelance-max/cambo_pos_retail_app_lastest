@@ -238,3 +238,16 @@ app_include_js = "/public/js/globalJavascript.js"
 # 	"Logging DocType Name": 30  # days to retain logs
 # }
 
+
+fixtures = [
+    {"dt": "Custom Field", "filters": [
+        [
+            "dt", "in", [
+                "Currency",
+            ]
+        ]
+    ]},
+
+    
+]
+
