@@ -88,6 +88,8 @@ def get_pos_config_info(pos_profile,terminal):
     branch = frappe.get_doc("Branch",pos_profile_doc.get("branch"))
     terminal_doc  =frappe.get_doc("Terminal",terminal)
     pos_setting= frappe.get_single("POS Setting")
+    main_currency = frappe.db.get_value("Currency",pos_setting.get("main_currency"),["symbol","number_format","custom_locale"],as_dict=1)
+    second_currency = frappe.db.get_value("Currency",pos_setting.get("second_currency"),["symbol","number_format","custom_locale"],as_dict=1)
     pos_profile_response = {
                 "name":pos_profile_doc.get("name"),
                 "pos_profile_name":pos_profile_doc.get("pos_profile_name"),
@@ -102,7 +104,19 @@ def get_pos_config_info(pos_profile,terminal):
 
                 
             }
-    
+    currency_info = []
+    currency_info.append({
+                    "name":pos_setting.get("main_currency"),
+                    "formatter":main_currency.get("number_format"),
+                    "symbol":main_currency.get("symbol"),
+                    "locale":main_currency.get("custom_locale")
+             }   )
+    currency_info.append({
+                "name":pos_setting.get("second_currency"),
+                "formatter":second_currency.get("number_format"),
+                "symbol":second_currency.get("symbol"),
+                "locale":second_currency.get("custom_locale")
+             }  )
     return {
             "branch_name":branch.get("branch_name"),
             "address":branch.get("address"),
@@ -114,12 +128,19 @@ def get_pos_config_info(pos_profile,terminal):
                     "name":terminal_doc.get("name"),
                     "terminal_name":terminal_doc.get("terminal_name")
                 },
+            "currency_info":currency_info,
             "pos_setting":{
                 "default_user_avatar":pos_setting.get("default_user_avatar"),
                 "can_open_day_before":pos_setting.get("can_open_day_before"),
                 "can_open_day_after":pos_setting.get("can_open_day_after"),
                 "main_currency":pos_setting.get("main_currency"),
+                "main_currency_formatter":main_currency.get("number_format"),
+                "main_currency_symbol":main_currency.get("symbol"),
+                "main_currency_locale":main_currency.get("custom_locale"),
                 "second_currency":pos_setting.get("second_currency"),
+                "second_currency_formatter":second_currency.get("number_format"),
+                "second_currency_symbol":second_currency.get("symbol"),
+                "second_currency_locale":second_currency.get("custom_locale"),
                 "pos_date_format":pos_setting.get("pos_date_format"),
 
             }

@@ -247,6 +247,11 @@ fixtures = [
             ]
         ]
     ]},
+    {"dt": "Currency", "filters": [
+        [
+            "enabled", "=",1
+        ]
+    ]}
 
     
 ]

@@ -1,0 +1,32 @@
+[
+ {
+  "currency_name": "KHR",
+  "custom_locale": "km_KH",
+  "docstatus": 0,
+  "doctype": "Currency",
+  "enabled": 1,
+  "fraction": "Sen",
+  "fraction_units": 100,
+  "modified": "2025-08-18 10:38:04.617815",
+  "name": "KHR",
+  "number_format": "#,###.##",
+  "smallest_currency_fraction_value": 0.0,
+  "symbol": "៛",
+  "symbol_on_right": 0
+ },
+ {
+  "currency_name": "USD",
+  "custom_locale": "en_US",
+  "docstatus": 0,
+  "doctype": "Currency",
+  "enabled": 1,
+  "fraction": "Cent",
+  "fraction_units": 100,
+  "modified": "2025-08-18 10:38:11.905318",
+  "name": "USD",
+  "number_format": "#,###.##",
+  "smallest_currency_fraction_value": 0.01,
+  "symbol": "$",
+  "symbol_on_right": 0
+ }
+]
