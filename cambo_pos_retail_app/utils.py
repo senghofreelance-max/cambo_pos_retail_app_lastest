@@ -82,14 +82,15 @@ def pos_login(usr="", pwd="",pos_profile=""):
 
 @frappe.whitelist(allow_guest=True)
 def get_pos_config_info(pos_profile,terminal):
+    shifts = frappe.get_list("Shift")
     pos_profile_doc = frappe.get_doc("POS Profile",pos_profile)
     pos_profile_meta =frappe.get_meta('POS Profile')
     pos_config_doc = frappe.get_doc("POS Config",pos_profile_doc.get("pos_config"))
     branch = frappe.get_doc("Branch",pos_profile_doc.get("branch"))
     terminal_doc  =frappe.get_doc("Terminal",terminal)
     pos_setting= frappe.get_single("POS Setting")
-    main_currency = frappe.db.get_value("Currency",pos_setting.get("main_currency"),["symbol","number_format","custom_locale"],as_dict=1)
-    second_currency = frappe.db.get_value("Currency",pos_setting.get("second_currency"),["symbol","number_format","custom_locale"],as_dict=1)
+    main_currency = frappe.db.get_value("Currency",pos_setting.get("main_currency"),["symbol","number_format","custom_locale","symbol_on_right"],as_dict=1)
+    second_currency = frappe.db.get_value("Currency",pos_setting.get("second_currency"),["symbol","number_format","custom_locale","symbol_on_right"],as_dict=1)
     pos_profile_response = {
                 "name":pos_profile_doc.get("name"),
                 "pos_profile_name":pos_profile_doc.get("pos_profile_name"),
@@ -109,13 +110,15 @@ def get_pos_config_info(pos_profile,terminal):
                     "name":pos_setting.get("main_currency"),
                     "formatter":main_currency.get("number_format"),
                     "symbol":main_currency.get("symbol"),
-                    "locale":main_currency.get("custom_locale")
+                    "locale":main_currency.get("custom_locale"),
+                    "symbol_on_right":main_currency.get("symbol_on_right"),
              }   )
     currency_info.append({
                 "name":pos_setting.get("second_currency"),
                 "formatter":second_currency.get("number_format"),
                 "symbol":second_currency.get("symbol"),
-                "locale":second_currency.get("custom_locale")
+                "locale":second_currency.get("custom_locale"),
+                "symbol_on_right":second_currency.get("symbol_on_right"),
              }  )
     return {
             "branch_name":branch.get("branch_name"),
@@ -124,6 +127,7 @@ def get_pos_config_info(pos_profile,terminal):
             "contact_name":branch.get("contact_name"),
             "contact_phone":branch.get("contact_phone"),
             "pos_profile":pos_profile_response,
+            "shifts":shifts,
             "terminal":{
                     "name":terminal_doc.get("name"),
                     "terminal_name":terminal_doc.get("terminal_name")

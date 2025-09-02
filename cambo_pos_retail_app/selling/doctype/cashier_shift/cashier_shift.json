@@ -11,10 +11,12 @@
   "posting_date",
   "opened_by",
   "working_day",
+  "working_date",
   "amended_from",
   "pos_profile",
-  "terminal",
+  "opened_terminal",
   "branch",
+  "shift_name",
   "column_break_wzbj",
   "closed_date",
   "closed_by",
@@ -130,15 +132,6 @@
    "reqd": 1
   },
   {
-   "fieldname": "terminal",
-   "fieldtype": "Link",
-   "in_list_view": 1,
-   "label": "Terminal",
-   "options": "Terminal",
-   "read_only_depends_on": "eval: doc.is_closed==1",
-   "reqd": 1
-  },
-  {
    "fieldname": "branch",
    "fieldtype": "Link",
    "label": "Branch",
@@ -155,13 +148,33 @@
    "fieldtype": "Table",
    "label": "Detail",
    "options": "Cashier Shift Detail"
+  },
+  {
+   "fieldname": "opened_terminal",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Terminal",
+   "options": "Terminal",
+   "read_only_depends_on": "eval: doc.is_closed==1",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "working_day.working_date",
+   "fieldname": "working_date",
+   "fieldtype": "Date",
+   "label": "Working Date"
+  },
+  {
+   "fieldname": "shift_name",
+   "fieldtype": "Data",
+   "label": "Shift Name"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-08-15 13:56:59.291676",
+ "modified": "2025-09-02 15:50:41.156137",
  "modified_by": "Administrator",
  "module": "Selling",
  "name": "Cashier Shift",
@@ -205,5 +218,6 @@
  "row_format": "Dynamic",
  "sort_field": "creation",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "track_changes": 1
 }

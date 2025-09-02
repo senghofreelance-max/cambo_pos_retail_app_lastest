@@ -44,7 +44,7 @@ def get_current_working_day(branch,pos_profile):
 	if working_day_name:
 		working_day = frappe.get_doc("Working Day",working_day_name)
 		return working_day
-	# frappe.throw("Working Day not found")
+	frappe.throw("Working Day not found")
 	# working_day = frappe.get_doc("Working Day",{},)
 	
 	

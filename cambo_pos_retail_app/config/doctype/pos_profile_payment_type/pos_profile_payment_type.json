@@ -10,6 +10,7 @@
   "payment_type_name",
   "symbol",
   "data_lcnr",
+  "decimal_degits",
   "column_break_tnix",
   "currency",
   "exchange_rate_value",
@@ -111,13 +112,20 @@
    "fieldname": "data_lcnr",
    "fieldtype": "Data",
    "hidden": 1
+  },
+  {
+   "default": "2",
+   "fetch_from": "currency.custom_pos_decimal_degits",
+   "fieldname": "decimal_degits",
+   "fieldtype": "Int",
+   "label": "Decimal Degits"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2025-08-18 10:38:58.708495",
+ "modified": "2025-08-30 15:31:36.416298",
  "modified_by": "Administrator",
  "module": "Config",
  "name": "POS Profile Payment Type",
