@@ -40,11 +40,18 @@ def open_working_day(working_day):
 
 @frappe.whitelist()
 def get_current_working_day(branch,pos_profile):
+	current_shift_name = frappe.get_value("Cashier Shift",{'pos_profile':pos_profile,'branch':branch,'is_closed':0})
 	working_day_name=frappe.db.get_value("Working Day",{'is_closed': 0,"branch":branch,"pos_profile":pos_profile})
+	currenct_working_day = None
+	current_shift=None
 	if working_day_name:
-		working_day = frappe.get_doc("Working Day",working_day_name)
-		return working_day
-	frappe.throw("Working Day not found")
+		currenct_working_day = frappe.get_doc("Working Day",working_day_name)
+		if current_shift_name:
+			current_shift = frappe.get_doc("Cashier Shift",current_shift_name)
+		
+	return {"current_working_day":currenct_working_day,"current_cashier_shift":current_shift}
+		
+	frappe.throw("Working Day not found",exc=frappe.DoesNotExistError,title="Not Found")
 	# working_day = frappe.get_doc("Working Day",{},)
 	
 	

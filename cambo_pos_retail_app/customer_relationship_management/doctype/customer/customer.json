@@ -27,7 +27,6 @@
   {
    "fieldname": "naming_series",
    "fieldtype": "Select",
-   "in_list_view": 1,
    "label": "Naming Series",
    "options": "CRM-.####",
    "reqd": 1
@@ -91,7 +90,7 @@
  "image_field": "photo",
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-07-30 14:47:05.081418",
+ "modified": "2025-09-25 10:45:05.328192",
  "modified_by": "Administrator",
  "module": "Customer Relationship Management",
  "name": "Customer",

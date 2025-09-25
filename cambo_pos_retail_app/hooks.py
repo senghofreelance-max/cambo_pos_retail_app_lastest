@@ -251,6 +251,21 @@ fixtures = [
         [
             "enabled", "=",1
         ]
+    ]},
+    {"dt": "Price Code", "filters": [
+        [
+            "price_code", "=","Default Price"
+        ]
+    ]},
+    {"dt": "Customer", "filters": [
+        [
+            "name", "=","General Customer"
+        ]
+    ]},
+    {"dt": "Customer Group", "filters": [
+        [
+            "name", "=","General Group"
+        ]
     ]}
 
     

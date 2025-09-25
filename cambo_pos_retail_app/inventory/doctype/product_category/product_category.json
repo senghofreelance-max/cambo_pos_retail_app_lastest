@@ -1,6 +1,7 @@
 {
  "actions": [],
  "allow_import": 1,
+ "allow_rename": 1,
  "autoname": "field:category_name",
  "creation": "2025-04-18 13:25:02.457856",
  "doctype": "DocType",
@@ -99,7 +100,7 @@
  "index_web_pages_for_search": 1,
  "is_tree": 1,
  "links": [],
- "modified": "2025-04-23 13:53:08.271665",
+ "modified": "2025-09-25 10:36:33.363735",
  "modified_by": "Administrator",
  "module": "Inventory",
  "name": "Product Category",

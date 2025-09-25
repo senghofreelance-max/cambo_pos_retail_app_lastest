@@ -8,8 +8,11 @@ from frappe.model.document import Document
 
 class CashierShift(Document):
 	def validate(self):
-		if not self.working:
+		print(frappe.get_roles())
+		if not self.working_day:
 			frappe.throw('Working Day is required')
+		#  check shift is opening
+		
 		
 		if self.get('shift_detail'):
 			for cashfloat in self.get('shift_detail'):
@@ -19,6 +22,11 @@ class CashierShift(Document):
 @frappe.whitelist()
 def open_cashier_shift(cashier_shift):
 	
+	exists = frappe.db.exists("Cashier Shift",{'is_closed':'0','pos_profile':cashier_shift.get('pos_profile'),'branch':cashier_shift.get("branch") })
+	if exists:
+		currenct_shift = frappe.get_doc("Cashier Shift",exists)
+		return currenct_shift
+	total_opening_amount=0.00
 	if cashier_shift.get("details"):
 		total_opening_amount = sum(d['total_open_amount'] for d in cashier_shift.get("details")) 
 		
@@ -34,6 +42,7 @@ def open_cashier_shift(cashier_shift):
 	"posting_date": frappe.utils.today(),
 	"shift_detail": cashier_shift.get("details") if cashier_shift.get("details") else [],
 	"note": cashier_shift.get("note"),
+	"shift_name": cashier_shift.get("shift_name"),
 	"total_opening_amount":total_opening_amount or 0.00
 	})
 	doc.insert()

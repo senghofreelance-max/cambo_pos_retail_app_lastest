@@ -1,0 +1,11 @@
+[
+ {
+  "docstatus": 0,
+  "doctype": "Price Code",
+  "is_default": 1,
+  "is_wholesale": 0,
+  "modified": "2025-09-25 10:03:06.865913",
+  "name": "Default Price",
+  "price_code": "Default Price"
+ }
+]

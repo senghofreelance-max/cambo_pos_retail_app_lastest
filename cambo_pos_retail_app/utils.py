@@ -64,7 +64,6 @@ def pos_login(usr="", pwd="",pos_profile=""):
         }
 
     except frappe.exceptions.AuthenticationError as e:
-        # Handle authentication failure
         frappe.local.response["http_status_code"] = 401
         return {
             "message": f"Invalid login credentials {e}",
@@ -72,7 +71,6 @@ def pos_login(usr="", pwd="",pos_profile=""):
         }
 
     except Exception as e:
-        # Handle any other exceptions
         frappe.local.response["http_status_code"] = 500
         frappe.log_error(message=f"Login failed: {e}", title="Custom Login Error")
         return {
@@ -91,6 +89,8 @@ def get_pos_config_info(pos_profile,terminal):
     pos_setting= frappe.get_single("POS Setting")
     main_currency = frappe.db.get_value("Currency",pos_setting.get("main_currency"),["symbol","number_format","custom_locale","symbol_on_right"],as_dict=1)
     second_currency = frappe.db.get_value("Currency",pos_setting.get("second_currency"),["symbol","number_format","custom_locale","symbol_on_right"],as_dict=1)
+    customer_groups = frappe.db.get_list("Customer Group",["name","color"])
+    price_codes = frappe.db.get_list("Price Code",["is_default","price_code","name"])
     pos_profile_response = {
                 "name":pos_profile_doc.get("name"),
                 "pos_profile_name":pos_profile_doc.get("pos_profile_name"),
@@ -128,6 +128,8 @@ def get_pos_config_info(pos_profile,terminal):
             "contact_phone":branch.get("contact_phone"),
             "pos_profile":pos_profile_response,
             "shifts":shifts,
+            "customer_groups":customer_groups,
+            "price_codes":price_codes,
             "terminal":{
                     "name":terminal_doc.get("name"),
                     "terminal_name":terminal_doc.get("terminal_name")
@@ -146,7 +148,5 @@ def get_pos_config_info(pos_profile,terminal):
                 "second_currency_symbol":second_currency.get("symbol"),
                 "second_currency_locale":second_currency.get("custom_locale"),
                 "pos_date_format":pos_setting.get("pos_date_format"),
-
             }
-            
     }
