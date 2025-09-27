@@ -22,7 +22,10 @@ class POSProfile(Document):
 					payment_type.exchange_rate_value = main_currency_rate
 				else:
 					payment_type.exchange_rate_value = second_currency_rate
-
+		product_categories_changed = self.has_value_changed("product_categories")
+		if product_categories_changed:
+			pass
+			
 	def remove_duplicate_child_rows(self):
 		seen_items = set()
 		unique_rows = []

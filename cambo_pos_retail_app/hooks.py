@@ -266,6 +266,10 @@ fixtures = [
         [
             "name", "=","General Group"
         ]
+    ]},{"dt": "UOM", "filters": [
+        [
+            "name", "=","Unit"
+        ]
     ]}
 
     

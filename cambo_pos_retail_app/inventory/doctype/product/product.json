@@ -12,6 +12,7 @@
   "auto_generate_code",
   "naming_series",
   "product_name",
+  "product_name_kh",
   "product_group",
   "product_category",
   "column_break_xfcw",
@@ -30,7 +31,7 @@
   "off_to",
   "off_from",
   "barcode_tab",
-  "table_ubzs",
+  "barcode",
   "price_tab",
   "product_prices",
   "sale_transaction_tab",
@@ -43,19 +44,20 @@
    "fieldname": "product_code",
    "fieldtype": "Data",
    "label": "Product Code / Barcode",
+   "search_index": 1,
    "set_only_once": 1
   },
   {
    "fieldname": "product_name",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "Product Name"
+   "label": "Product Name En"
   },
   {
    "fieldname": "product_group",
-   "fieldtype": "Link",
+   "fieldtype": "Data",
    "label": "Product Group",
-   "options": "Product Category"
+   "read_only": 1
   },
   {
    "fieldname": "product_category",
@@ -81,7 +83,8 @@
    "default": "0",
    "fieldname": "auto_generate_code",
    "fieldtype": "Check",
-   "label": "Auto Generate Code"
+   "label": "Auto Generate Code",
+   "set_only_once": 1
   },
   {
    "fieldname": "column_break_xfcw",
@@ -94,10 +97,11 @@
    "label": "Price"
   },
   {
+   "default": "Unit",
    "fieldname": "unit",
    "fieldtype": "Link",
    "in_list_view": 1,
-   "label": "Unit",
+   "label": "Default Unit",
    "options": "UOM",
    "reqd": 1
   },
@@ -194,10 +198,17 @@
   {
    "fieldname": "barcode_tab",
    "fieldtype": "Tab Break",
+   "hidden": 1,
    "label": "Barcode"
   },
   {
-   "fieldname": "table_ubzs",
+   "fieldname": "product_name_kh",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Product Name Kh"
+  },
+  {
+   "fieldname": "barcode",
    "fieldtype": "Table",
    "label": "Barcode",
    "options": "Product Barcode"
@@ -207,7 +218,7 @@
  "image_field": "photo",
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-04-30 14:36:02.307228",
+ "modified": "2025-09-26 14:39:11.905204",
  "modified_by": "Administrator",
  "module": "Inventory",
  "name": "Product",

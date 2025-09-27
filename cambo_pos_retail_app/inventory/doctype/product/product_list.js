@@ -3,7 +3,7 @@ frappe.listview_settings['Product'] = {
     formatters: {
         display_photo(value) {
 
-            return `<img src='${value || "/assets/estc_app/images/avatar-2.png"}' style='border-radius: 50%;height:35px; margin-right:10px;margin-left:5px'/>`;
+            return `<div style='border-radius: 50% ;height:35px;margin-right:10px;margin-left:5px'"><img src='${value || "/assets/cambo_pos_retail_app/assets/photo/Placeholder.svg"}' style="border-radius: 50% ;height:35px;"/></div>`;
         },
 
     }

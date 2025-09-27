@@ -9,6 +9,7 @@
   "uniqe_name",
   "pos_profile_name",
   "branch",
+  "default_price_code",
   "column_break_ktlm",
   "invoice_naming_series",
   "pos_config",
@@ -23,7 +24,10 @@
   "closed_working_day_required_password",
   "make_order_required_password",
   "changed_quantity_required_password",
-  "delete_order_required_password"
+  "delete_order_required_password",
+  "product_category_tab",
+  "section_break_lfpi",
+  "product_categories"
  ],
  "fields": [
   {
@@ -132,12 +136,33 @@
    "fieldtype": "Table",
    "label": "Payment Types",
    "options": "POS Profile Payment Type"
+  },
+  {
+   "fieldname": "section_break_lfpi",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "product_category_tab",
+   "fieldtype": "Tab Break",
+   "label": "Product Category"
+  },
+  {
+   "fieldname": "product_categories",
+   "fieldtype": "Table",
+   "label": "Product Category",
+   "options": "POS Profile Product Category"
+  },
+  {
+   "fieldname": "default_price_code",
+   "fieldtype": "Link",
+   "label": "Default Price Code",
+   "options": "Price Code"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-08-15 13:36:46.582234",
+ "modified": "2025-09-26 11:48:12.182526",
  "modified_by": "Administrator",
  "module": "Config",
  "name": "POS Profile",

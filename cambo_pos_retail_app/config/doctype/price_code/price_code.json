@@ -1,5 +1,6 @@
 {
  "actions": [],
+ "allow_rename": 1,
  "autoname": "field:price_code",
  "creation": "2025-04-28 09:10:22.361110",
  "doctype": "DocType",
@@ -7,7 +8,7 @@
  "field_order": [
   "price_code",
   "is_wholesale",
-  "is_default"
+  "built_in"
  ],
  "fields": [
   {
@@ -20,19 +21,21 @@
    "default": "0",
    "fieldname": "is_wholesale",
    "fieldtype": "Check",
+   "in_list_view": 1,
    "label": "Is Wholesale"
   },
   {
    "default": "0",
-   "fieldname": "is_default",
+   "fieldname": "built_in",
    "fieldtype": "Check",
-   "label": "Is Default"
+   "hidden": 1,
+   "label": "Built In"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-09-25 10:14:23.585982",
+ "modified": "2025-09-26 14:21:37.324579",
  "modified_by": "Administrator",
  "module": "Config",
  "name": "Price Code",

@@ -78,6 +78,9 @@ def pos_login(usr="", pwd="",pos_profile=""):
             "error_type": "ServerError"
         }
 
+def get_product_for_pos():
+    pass
+
 @frappe.whitelist(allow_guest=True)
 def get_pos_config_info(pos_profile,terminal):
     shifts = frappe.get_list("Shift")
