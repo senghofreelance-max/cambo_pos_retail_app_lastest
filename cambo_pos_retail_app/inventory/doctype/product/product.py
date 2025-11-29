@@ -28,7 +28,6 @@ class Product(Document):
 			frappe.throw(_("Please set product price for Default Price"), title=_("Price Required"),exc=frappe.MandatoryError)
 		if not self.price and len(self.product_prices) <= 0:
 			frappe.throw(_("Please set product price."), title=_("Price Required"),exc=frappe.MandatoryError)
-			# frappe.toast("Please set product price.")
 		
 		self.check_duplicate_product_prices()
 
@@ -43,28 +42,13 @@ class Product(Document):
 					f"Duplicate entry found in Product Prices. (Row {row.idx} Barcode {row.barcode}), "
 				)
 			seen.add(key)
-		
 
-		# unique_combinations = set()
-
-		# for row in self.get("product_prices"):
-		# 	combination = (
-		# 		str(row.barcode),
-		# 		str(row.branch), 
-		# 		str(row.price_code), 
-		# 		str(row.uom)
-		# 	)
-		# 	if combination in unique_combinations:
-		# 		frappe.throw(
-		# 			_("Duplicate entry found in Product Prices. Combination of Branch, Price Code, UOM, and Barcode must be unique. (Row {0})").format(row.idx),
-		# 			title=_("Duplicate Product Price")
-		# 		)
-		# 	else:
-		# 		unique_combinations.add(combination)
 		
 	def before_save(self):
 		if self.photo:
 			self.display_photo = self.photo
+		if not self.product_name_kh:
+			self.product_name_kh = self.product_name
 
 	def autoname(self):
 		if self.auto_generate_code:

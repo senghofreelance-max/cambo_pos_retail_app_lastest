@@ -13,12 +13,14 @@
   "sort_order",
   "parent_product_category",
   "is_group",
+  "show_in_shortcut_menu",
   "lft",
   "rgt",
   "old_parent",
   "column_break_fcbl",
   "text_color",
-  "background_color"
+  "background_color",
+  "background_image"
  ],
  "fields": [
   {
@@ -94,13 +96,25 @@
   {
    "fieldname": "column_break_fcbl",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "background_image",
+   "fieldtype": "Attach Image",
+   "label": "Background Image"
+  },
+  {
+   "default": "0",
+   "fieldname": "show_in_shortcut_menu",
+   "fieldtype": "Check",
+   "label": "Show In Shortcut Menu"
   }
  ],
  "grid_page_length": 50,
+ "image_field": "background_image",
  "index_web_pages_for_search": 1,
  "is_tree": 1,
  "links": [],
- "modified": "2025-09-25 10:36:33.363735",
+ "modified": "2025-10-06 15:05:11.181225",
  "modified_by": "Administrator",
  "module": "Inventory",
  "name": "Product Category",
@@ -151,10 +165,11 @@
    "share": 1
   },
   {
-   "import": 1,
+   "delete": 1,
    "permlevel": 1,
    "read": 1,
    "role": "System Manager",
+   "select": 1,
    "write": 1
   }
  ],

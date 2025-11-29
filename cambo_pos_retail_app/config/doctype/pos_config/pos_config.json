@@ -9,7 +9,8 @@
   "config_name",
   "column_break_cljc",
   "login_background",
-  "home_background"
+  "home_background",
+  "pos_background"
  ],
  "fields": [
   {
@@ -31,12 +32,17 @@
    "fieldname": "home_background",
    "fieldtype": "Attach Image",
    "label": "Home Background"
+  },
+  {
+   "fieldname": "pos_background",
+   "fieldtype": "Attach Image",
+   "label": "POS Background"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-08-04 08:35:54.706201",
+ "modified": "2025-10-07 13:40:40.166207",
  "modified_by": "Administrator",
  "module": "Config",
  "name": "POS Config",
