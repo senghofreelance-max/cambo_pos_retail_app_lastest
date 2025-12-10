@@ -20,7 +20,8 @@
   "column_break_fcbl",
   "text_color",
   "background_color",
-  "background_image"
+  "background_image",
+  "bread_crumb"
  ],
  "fields": [
   {
@@ -107,6 +108,12 @@
    "fieldname": "show_in_shortcut_menu",
    "fieldtype": "Check",
    "label": "Show In Shortcut Menu"
+  },
+  {
+   "fieldname": "bread_crumb",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Bread Crumb"
   }
  ],
  "grid_page_length": 50,
@@ -114,7 +121,7 @@
  "index_web_pages_for_search": 1,
  "is_tree": 1,
  "links": [],
- "modified": "2025-10-06 15:05:11.181225",
+ "modified": "2025-12-03 19:53:14.523326",
  "modified_by": "Administrator",
  "module": "Inventory",
  "name": "Product Category",

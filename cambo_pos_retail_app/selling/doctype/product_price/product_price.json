@@ -43,7 +43,6 @@
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Barcode",
-   "reqd": 1,
    "unique": 1
   },
   {
@@ -65,7 +64,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2025-09-26 16:14:50.981588",
+ "modified": "2025-11-29 15:39:57.556511",
  "modified_by": "Administrator",
  "module": "Selling",
  "name": "Product Price",

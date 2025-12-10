@@ -14,19 +14,30 @@
   "product_group",
   "product_category",
   "column_break_phhz",
-  "product_data",
   "pos_profile",
-  "branch"
+  "branch",
+  "column_break_azzq",
+  "is_off",
+  "off_from",
+  "end_off",
+  "off_value",
+  "section_break_gakx",
+  "column_break_uqnz",
+  "prices",
+  "column_break_bzae",
+  "product_data"
  ],
  "fields": [
   {
    "fieldname": "product_code",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "Product Code"
   },
   {
    "fieldname": "product_name_en",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "Product Name En"
   },
   {
@@ -65,6 +76,7 @@
   {
    "fieldname": "product_category",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Product Category",
    "options": "Product Category"
   },
@@ -76,13 +88,59 @@
    "fieldname": "product_data",
    "fieldtype": "JSON",
    "label": "Product Data"
+  },
+  {
+   "fieldname": "section_break_gakx",
+   "fieldtype": "Section Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_off",
+   "fieldtype": "Check",
+   "label": "Is Off"
+  },
+  {
+   "fieldname": "off_from",
+   "fieldtype": "Date",
+   "label": "Off From"
+  },
+  {
+   "fieldname": "end_off",
+   "fieldtype": "Date",
+   "label": "End Off"
+  },
+  {
+   "fieldname": "off_value",
+   "fieldtype": "Float",
+   "label": "Off Value"
+  },
+  {
+   "columns": 3,
+   "fieldname": "column_break_azzq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "columns": 6,
+   "fieldname": "prices",
+   "fieldtype": "JSON",
+   "label": "Prices"
+  },
+  {
+   "columns": 6,
+   "fieldname": "column_break_uqnz",
+   "fieldtype": "Column Break"
+  },
+  {
+   "columns": 3,
+   "fieldname": "column_break_bzae",
+   "fieldtype": "Column Break"
   }
  ],
  "grid_page_length": 50,
  "in_create": 1,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-09-26 09:36:07.168162",
+ "modified": "2025-12-01 11:30:25.838017",
  "modified_by": "Administrator",
  "module": "Selling",
  "name": "POS Product",

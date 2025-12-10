@@ -16,23 +16,27 @@
   "product_group",
   "product_category",
   "column_break_xfcw",
+  "disabled",
   "price",
   "unit",
   "photo",
   "display_photo",
-  "disabled",
   "new_arrival",
-  "section_break_htkt",
-  "description",
+  "inventory_product",
+  "cost_section",
+  "cost",
   "promotion_section",
   "is_off",
   "off_value",
   "column_break_alru",
   "off_to",
   "off_from",
+  "section_break_htkt",
+  "description",
   "barcode_tab",
   "barcode",
   "price_tab",
+  "auto_generate_barcode",
   "product_prices",
   "sale_transaction_tab",
   "history_section",
@@ -91,6 +95,7 @@
    "fieldtype": "Column Break"
   },
   {
+   "default": "0",
    "fieldname": "price",
    "fieldtype": "Currency",
    "in_list_view": 1,
@@ -192,7 +197,7 @@
   {
    "fieldname": "product_prices",
    "fieldtype": "Table",
-   "label": "Prices",
+   "label": "Product Prices",
    "options": "Product Price"
   },
   {
@@ -212,13 +217,35 @@
    "fieldtype": "Table",
    "label": "Barcode",
    "options": "Product Barcode"
+  },
+  {
+   "default": "1",
+   "fieldname": "auto_generate_barcode",
+   "fieldtype": "Check",
+   "label": "Auto Generate Barcode"
+  },
+  {
+   "default": "0",
+   "fieldname": "inventory_product",
+   "fieldtype": "Check",
+   "label": "Inventory Product"
+  },
+  {
+   "fieldname": "cost_section",
+   "fieldtype": "Section Break",
+   "label": "Cost"
+  },
+  {
+   "fieldname": "cost",
+   "fieldtype": "Float",
+   "label": "Cost"
   }
  ],
  "grid_page_length": 50,
  "image_field": "photo",
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-09-26 14:39:11.905204",
+ "modified": "2025-12-01 11:25:37.496359",
  "modified_by": "Administrator",
  "module": "Inventory",
  "name": "Product",

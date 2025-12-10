@@ -79,8 +79,55 @@ def pos_login(usr="", pwd="",pos_profile=""):
             "error_type": "ServerError"
         }
 
-def get_product_for_pos():
-    pass
+def get_all_product_by_category(pos_profile,pos_profile_doc):
+    product_categories = []
+    if len(pos_profile_doc.get("product_categories")) > 0:
+        sql = """
+            	SELECT 
+                    a.name name,
+                    product_category category_name,
+                    parent_product_category,
+                    b.idx sort_order,
+                    a.background_color,
+                    a.background_image,
+                    a.text_color,
+                    b.parent,
+                    a.is_group,
+                    a.show_in_shortcut_menu
+                FROM 
+                    `tabPOS Profile Product Category` b INNER JOIN `tabProduct Category` a
+                ON a.name = b.product_category
+                WHERE b.parent = %(pos_profile)s
+                UNION 
+                SELECT 
+                    name,
+                    category_name,
+                    parent_product_category,
+                    -1 sort_order,
+                    background_color,
+                    background_image,
+                    text_color,
+                    null,
+                    1 is_group,
+                    1 show_in_shortcut_menu
+                FROM `tabProduct Category` WHERE NAME  = 'All Categories'
+        """
+        product_categories = frappe.db.sql(sql,{"pos_profile":pos_profile},as_dict=1)
+    else:
+        product_categories = frappe.db.get_list("Product Category",
+                                                        ["name",
+                                                         "parent_product_category",
+                                                         "is_group",
+                                                         "category_name",
+                                                         "show_in_shortcut_menu",
+                                                         "background_image",
+                                                         "text_color",
+                                                         "background_color",
+                                                         "sort_order"],
+                                                         order_by="sort_order asc")
+    return product_categories
+
+
 
 @frappe.whitelist(allow_guest=True)
 def get_pos_config_info(pos_profile,terminal):
@@ -95,69 +142,10 @@ def get_pos_config_info(pos_profile,terminal):
     second_currency = frappe.db.get_value("Currency",pos_setting.get("second_currency"),["symbol","number_format","custom_locale","symbol_on_right"],as_dict=1)
     customer_groups = frappe.db.get_list("Customer Group",["name","color"])
     price_codes = frappe.db.get_list("Price Code",["is_default","price_code","name"])
-    product_categories = []
-    if len(pos_profile_doc.get("product_categories")) > 0:
-        sql = """
-            	SELECT 
-                    a.NAME,
-                    product_category_name,
-                    parent_product_category,
-                    b.idx sort_order,
-                    a.background_color,
-                    a.background_image,
-                    a.text_color,
-                    b.parent,
-                    a.is_group
-                FROM 
-                    `tabPOS Profile Product Category` b INNER JOIN `tabProduct Category` a
-                ON a.name = b.product_category
-                WHERE b.parent = %(pos_profile)s
-                UNION 
-                SELECT 
-                    NAME,
-                    product_category_name,
-                    parent_product_category,
-                    -1 sort_order,
-                    background_color,
-                    background_image,
-                    text_color,
-                    null,
-                    1 is_group
-                FROM `tabProduct Category` WHERE NAME  = 'All Categories'
-        """
-        product_categories = frappe.db.sql(sql,{"pos_profile":pos_profile},as_dict=1)
-    else:
-        product_categories = frappe.db.get_list("Product Category",["name","parent_product_category","is_group","category_name as product_category_name","show_in_shortcut_menu","background_image","text_color","background_color","sort_order"],order_by="sort_order asc")
     
+    product_categories = []
+    product_categories = get_all_product_by_category(pos_profile,pos_profile_doc)
 
-    # category_map = {}
-    # for item in product_categories:
-    #     # Make a copy of the item and add an empty 'children' list
-    #     category = item.copy()
-    #     category['children'] = []
-    #     category_map[category['name']] = category
-
-    # root_category = None
-    # for item in product_categories:
-    # # Make a copy of the item and add an empty 'children' list
-    #     category = item.copy()
-    #     category['children'] = []
-    #     category_map[category['name']] = category
-
-    # root_categories = None
-    # for name, category in category_map.items():
-    #     if category.get('parent_product_category') is None:
-    #         root_categories = category
-    #         break
-
-    # for item in product_categories:
-    #     child = category_map[item['name']]
-    #     parent_name = item.get('parent_product_category')
-
-    #     if parent_name is not None:
-    #         if parent_name in category_map:
-    #             parent = category_map[parent_name]
-    #             parent['children'].append(child)
 
 
     pos_profile_response = {
@@ -220,6 +208,9 @@ def get_pos_config_info(pos_profile,terminal):
             "product_categories":product_categories
     }
 
+
+
+
 @frappe.whitelist(allow_guest=1)
 def get_pos_translate():
     data = frappe.db.get_all("POS Translate",['name','language_code','translate_text'])
@@ -227,3 +218,42 @@ def get_pos_translate():
     for language in data:
         response[language['language_code']] = json.loads(language.translate_text)
     return response
+
+@frappe.whitelist(allow_guest=1)
+def get_product_for_pos(pos_profile=None):
+    pos_profile_doc = frappe.get_doc("POS Profile",pos_profile)
+    product_categories = []
+    if len(pos_profile_doc.get("product_categories")) > 0:
+        sql = """
+                SELECT 
+                    a.NAME product_category
+                FROM
+                    `tabPOS Profile Product Category` b INNER JOIN `tabProduct Category` a
+                ON a.name = b.product_category
+                WHERE b.parent = %(pos_profile)s
+                UNION 
+                SELECT 
+                    NAME
+
+                FROM `tabProduct Category` WHERE NAME  = 'All Categories'
+        """
+        product_categories = frappe.db.sql(sql,{"pos_profile":pos_profile},as_dict=1)
+
+    else:
+        product_categories = frappe.db.get_list("Product Category",filters=[['is_group',"=",0]])
+    product_data = []
+    for pc in product_categories:
+        product_list = frappe.get_list("POS Product",[
+                                                        'product_code',
+                                                        'product_name_en',
+                                                        'product_name_kh',
+                                                        'branch','pos_profile',
+                                                        'product_data',
+                                                        'price',
+                                                        'prices',
+                                                        'product_group',
+                                                        'product_category'
+                                                    ],filters={"product_category":pc.get("product_category")})
+        product_data.append({'product_category':pc.get('product_category'),'product':product_list})
+    return product_data
+

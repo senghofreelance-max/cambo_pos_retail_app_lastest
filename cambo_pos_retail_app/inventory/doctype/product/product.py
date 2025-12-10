@@ -5,6 +5,9 @@ import frappe
 from frappe import _
 from frappe.model.document import Document
 from frappe.model.naming import make_autoname
+import itertools
+import operator
+import json
 
 
 class Product(Document):
@@ -49,7 +52,63 @@ class Product(Document):
 			self.display_photo = self.photo
 		if not self.product_name_kh:
 			self.product_name_kh = self.product_name
+		if self.auto_generate_barcode:
+			for price in self.product_prices:
+				if not price.barcode:
+					price.barcode =  f'{self.product_code}-{price.idx:02d}'
+		else:
+			for price in self.product_prices:
+				if not price.barcode:
+					frappe.throw(_("Please enter barcode for price list row {0}").format(price.idx))
 
+	def on_update(self):
+		delete_pos_product_sql = """
+									delete from 
+										`tabPOS Product` 
+									where product_code = %(product_code)s
+								"""
+		frappe.db.sql(delete_pos_product_sql,{"product_code":self.product_code} )
+		frappe.db.commit()
+		if len(self.product_prices) > 0:
+			if self.disabled == 0:
+				sorted_data = sorted(json.loads(frappe.as_json(self.product_prices)) , key=operator.itemgetter("branch"))
+			for key, group in itertools.groupby(sorted_data, key=operator.itemgetter("branch")):
+						doc = frappe.get_doc({'doctype': 'POS Product',
+							'product_code': self.product_code,
+							'product_name_en': self.product_name,
+							'product_name_kh': self.product_name_kh,
+							'product_group': self.product_group,
+							'product_category': self.product_category,
+							'uom': self.unit,
+							'price': self.price,
+							'inventory_product': self.inventory_product,
+							'cost': self.cost,
+							'photo': self.photo,
+							'display_photo': self.display_photo,
+							'prices':frappe.as_json(list(group)),
+							'product_data':frappe.as_json(self),
+							'branch': key})
+						doc.save()
+		else:
+
+			if self.disabled == 0:
+				doc = frappe.get_doc({'doctype': 'POS Product',
+					'product_code': self.product_code,
+					'product_name_en': self.product_name,
+					'product_name_kh': self.product_name_kh,
+					'product_group': self.product_group,
+					'product_category': self.product_category,
+					'uom': self.unit,
+					'price': self.price,
+					'inventory_product': self.inventory_product,
+					'cost': self.cost,
+					'photo': self.photo,
+					'display_photo': self.display_photo,
+					'product_data':frappe.as_json(self)
+					})
+				doc.save()
+			
+			
 	def autoname(self):
 		if self.auto_generate_code:
 			product_code_prefix = frappe.db.get_value("Product Category",self.product_category,"product_code_prefix")
@@ -60,3 +119,4 @@ class Product(Document):
 					self.name = self.product_code
 				else:
 					frappe.throw(_("Please enter product code."))
+
