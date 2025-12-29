@@ -14,9 +14,11 @@
   "phone",
   "gender",
   "column_break_nyif",
+  "disbled",
   "default_price_code",
   "photo",
-  "display_photo"
+  "display_photo",
+  "keyword"
  ],
  "fields": [
   {
@@ -84,13 +86,25 @@
    "label": "Customer Group",
    "options": "Customer Group",
    "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "disbled",
+   "fieldtype": "Check",
+   "label": "Disbled"
+  },
+  {
+   "fieldname": "keyword",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Keyword"
   }
  ],
  "grid_page_length": 50,
  "image_field": "photo",
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-09-25 10:45:05.328192",
+ "modified": "2025-12-28 20:07:30.862743",
  "modified_by": "Administrator",
  "module": "Customer Relationship Management",
  "name": "Customer",

@@ -13,14 +13,17 @@
   "cost",
   "product_group",
   "product_category",
+  "unit",
   "column_break_phhz",
   "pos_profile",
   "branch",
+  "photo",
   "column_break_azzq",
   "is_off",
   "off_from",
   "end_off",
   "off_value",
+  "description",
   "section_break_gakx",
   "column_break_uqnz",
   "prices",
@@ -134,13 +137,31 @@
    "columns": 3,
    "fieldname": "column_break_bzae",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Text",
+   "label": "Description"
+  },
+  {
+   "fieldname": "photo",
+   "fieldtype": "Data",
+   "label": "Photo"
+  },
+  {
+   "fieldname": "unit",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Default Unit",
+   "read_only": 1,
+   "reqd": 1
   }
  ],
  "grid_page_length": 50,
  "in_create": 1,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-12-01 11:30:25.838017",
+ "modified": "2025-12-27 12:07:30.092065",
  "modified_by": "Administrator",
  "module": "Selling",
  "name": "POS Product",

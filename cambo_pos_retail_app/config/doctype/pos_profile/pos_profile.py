@@ -24,8 +24,20 @@ class POSProfile(Document):
 				else:
 					payment_type.exchange_rate_value = second_currency_rate
 		product_categories_changed = self.has_value_changed("product_categories")
+		
 		if product_categories_changed:
-			pass
+			frappe.db.set_value('Product Category', {'pos_profile':self.name}, 'pos_profile', '', update_modified=False)
+			sql = """
+					UPDATE `tabProduct Category` AS pc
+					INNER JOIN `tabPOS Profile Product Category` AS pp
+					ON pc.parent_product_category = pp.product_category
+					SET
+						pc.pos_profile = pp.parent
+					WHERE
+						pp.parent = %(pos_profile)s;
+				"""
+			frappe.db.sql(sql,{"pos_profile":self.name})
+			frappe.db.commit()
 			
 	def remove_duplicate_payment_types(self):
 		seen_items = set()

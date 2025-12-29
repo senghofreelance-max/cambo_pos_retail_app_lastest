@@ -17,6 +17,7 @@
   "lft",
   "rgt",
   "old_parent",
+  "pos_profile",
   "column_break_fcbl",
   "text_color",
   "background_color",
@@ -114,6 +115,12 @@
    "fieldtype": "Data",
    "hidden": 1,
    "label": "Bread Crumb"
+  },
+  {
+   "fieldname": "pos_profile",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "POS Profile"
   }
  ],
  "grid_page_length": 50,
@@ -121,7 +128,7 @@
  "index_web_pages_for_search": 1,
  "is_tree": 1,
  "links": [],
- "modified": "2025-12-03 19:53:14.523326",
+ "modified": "2025-12-27 12:42:21.281187",
  "modified_by": "Administrator",
  "module": "Inventory",
  "name": "Product Category",

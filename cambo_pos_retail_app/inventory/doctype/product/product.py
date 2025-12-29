@@ -17,7 +17,7 @@ class Product(Document):
 			frappe.throw(_("Please enter product code."))
 
 		if self.has_value_changed("product_category"):
-			if self.product_code and frappe.db.exist:
+			if self.product_code and frappe.db.exists({"doctype": "Product", "product_code": self.product_code}):
 				frappe.db.sql("""
 						UPDATE `tabProduct` a
 						INNER JOIN `tabProduct Category` c ON a.product_category = c.category_name
@@ -69,26 +69,28 @@ class Product(Document):
 								"""
 		frappe.db.sql(delete_pos_product_sql,{"product_code":self.product_code} )
 		frappe.db.commit()
+		pos_profile = frappe.db.get_value('Product Category', self.product_category, 'pos_profile')
 		if len(self.product_prices) > 0:
 			if self.disabled == 0:
 				sorted_data = sorted(json.loads(frappe.as_json(self.product_prices)) , key=operator.itemgetter("branch"))
 			for key, group in itertools.groupby(sorted_data, key=operator.itemgetter("branch")):
-						doc = frappe.get_doc({'doctype': 'POS Product',
-							'product_code': self.product_code,
-							'product_name_en': self.product_name,
-							'product_name_kh': self.product_name_kh,
-							'product_group': self.product_group,
-							'product_category': self.product_category,
-							'uom': self.unit,
-							'price': self.price,
-							'inventory_product': self.inventory_product,
-							'cost': self.cost,
-							'photo': self.photo,
-							'display_photo': self.display_photo,
-							'prices':frappe.as_json(list(group)),
-							'product_data':frappe.as_json(self),
-							'branch': key})
-						doc.save()
+				doc = frappe.get_doc({'doctype': 'POS Product',
+					'product_code': self.product_code,
+					'product_name_en': self.product_name,
+					'product_name_kh': self.product_name_kh,
+					'product_group': self.product_group,
+					'product_category': self.product_category,
+					'unit': self.unit,
+					'price': self.price,
+					'inventory_product': self.inventory_product,
+					'cost': self.cost,
+					'photo': self.photo,
+					'pos_profile':pos_profile,
+					'display_photo': self.display_photo,
+					'prices':frappe.as_json(list(group)),
+					'product_data':frappe.as_json(self),
+					'branch': key})
+				doc.save()
 		else:
 
 			if self.disabled == 0:
@@ -98,11 +100,12 @@ class Product(Document):
 					'product_name_kh': self.product_name_kh,
 					'product_group': self.product_group,
 					'product_category': self.product_category,
-					'uom': self.unit,
+					'unit': self.unit,
 					'price': self.price,
 					'inventory_product': self.inventory_product,
 					'cost': self.cost,
 					'photo': self.photo,
+					'pos_profile':pos_profile,
 					'display_photo': self.display_photo,
 					'product_data':frappe.as_json(self)
 					})
@@ -115,7 +118,7 @@ class Product(Document):
 			if product_code_prefix:
 				self.name = make_autoname(product_code_prefix)
 			else:
-				if self.product_code and frappe.db.exist:
+				if self.product_code and not frappe.db.exists({"doctype": "Product", "product_code": self.product_code}):
 					self.name = self.product_code
 				else:
 					frappe.throw(_("Please enter product code."))

@@ -7,6 +7,7 @@
  "engine": "InnoDB",
  "field_order": [
   "branch_name",
+  "default_customer",
   "section_break_ohsr",
   "address",
   "phone",
@@ -45,12 +46,18 @@
    "fieldname": "contact_phone",
    "fieldtype": "Data",
    "label": "Contact Phone"
+  },
+  {
+   "fieldname": "default_customer",
+   "fieldtype": "Link",
+   "label": "Default Customer",
+   "options": "Customer"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-07-22 19:08:39.894639",
+ "modified": "2025-12-29 11:11:22.112910",
  "modified_by": "Administrator",
  "module": "Config",
  "name": "Branch",

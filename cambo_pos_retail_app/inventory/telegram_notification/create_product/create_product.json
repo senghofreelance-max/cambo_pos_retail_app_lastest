@@ -1,0 +1,22 @@
+{
+ "attach_print": 0,
+ "channel": "Telegram",
+ "creation": "2025-12-29 09:32:24.495047",
+ "days_in_advance": 0,
+ "docstatus": 0,
+ "doctype": "Telegram Notification",
+ "document_type": "Product",
+ "dynamic_recipients": 0,
+ "enabled": 1,
+ "event": "New",
+ "idx": 0,
+ "is_standard": 1,
+ "message": "{{doc.product_name}} is created\nby {{doc.owner}}",
+ "modified": "2025-12-29 09:53:14.729715",
+ "modified_by": "Administrator",
+ "module": "Inventory",
+ "name": "Create Product",
+ "owner": "Administrator",
+ "subject": "New Product {{doc.product_name}} Create",
+ "telegram_user": "admin@mail.com-Telegram Alert"
+}
