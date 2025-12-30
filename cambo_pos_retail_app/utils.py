@@ -355,10 +355,26 @@ def get_customer_list_for_pos(keyword=None,page_length=25,start=1):
     page_length=page_length,
     start=start
 )
+    print(f"{keyword}")
     return customer_list
 
 @frappe.whitelist()
 def get_customer_by_code():
     pass
+
+
+@frappe.whitelist()
+def get_customer_by_keyword(keyword=None):
+    if keyword:
+        filters = {'keyword': ['like', f'%{keyword}%']}
+        customer_list = frappe.db.get_list('Customer',
+        filters=filters,
+        fields=['name', 'customer_name','phone','customer_group','default_price_code'],
+        order_by='customer_name asc',
+
+    )
+    print(f"{keyword}")
+    return customer_list
+
 
 
