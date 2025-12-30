@@ -365,6 +365,7 @@ def get_customer_by_code():
 
 @frappe.whitelist()
 def get_customer_by_keyword(keyword=None):
+    
     if keyword:
         filters = {'keyword': ['like', f'%{keyword}%']}
         customer_list = frappe.db.get_list('Customer',
