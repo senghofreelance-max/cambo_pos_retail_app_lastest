@@ -254,46 +254,6 @@ def get_pos_translate():
         response[language['language_code']] = json.loads(language.translate_text)
     return response
 
-# @frappe.whitelist(allow_guest=1)
-# def get_product_for_pos(pos_profile=None):
-#     pos_profile_doc = frappe.get_doc("POS Profile",pos_profile)
-#     product_categories = []
-#     if len(pos_profile_doc.get("product_categories")) > 0:
-#         sql = """
-#                 SELECT 
-#                     a.NAME product_category
-#                 FROM
-#                     `tabPOS Profile Product Category` b INNER JOIN `tabProduct Category` a
-#                 ON a.name = b.product_category
-#                 WHERE b.parent = %(pos_profile)s
-#                 UNION 
-#                 SELECT 
-#                     NAME
-
-#                 FROM `tabProduct Category` WHERE NAME  = 'All Categories'
-#         """
-#         product_categories = frappe.db.sql(sql,{"pos_profile":pos_profile},as_dict=1)
-
-#     else:
-#         product_categories = frappe.db.get_list("Product Category",filters=[['is_group',"=",0]])
-#     product_data = []
-#     for pc in product_categories:
-#         product_list = frappe.get_list("POS Product",[
-#                                                         'name',
-#                                                         'product_code',
-#                                                         'product_name_en',
-#                                                         'product_name_kh',
-#                                                         'branch','pos_profile',
-#                                                         'product_data as product',
-#                                                         'price',
-#                                                         'prices',
-#                                                         'product_group',
-#                                                         'product_category'
-#                                                     ],filters={"product_category":pc.get("product_category")},page_length=100)
-#         product_data.append({'product_category':pc.get('product_category'),'product':product_list})
-#     return product_data
-
-
 
 @frappe.whitelist(allow_guest=1)
 def get_product_for_pos(pos_profile=None):
@@ -355,10 +315,26 @@ def get_customer_list_for_pos(keyword=None,page_length=25,start=1):
     page_length=page_length,
     start=start
 )
+    print(f"{keyword}")
     return customer_list
 
 @frappe.whitelist()
 def get_customer_by_code():
     pass
+
+
+@frappe.whitelist()
+def get_customer_by_keyword(keyword=None):
+    if keyword:
+        filters = {'keyword': ['like', f'%{keyword}%']}
+        customer_list = frappe.db.get_list('Customer',
+        filters=filters,
+        fields=['name', 'customer_name','phone','customer_group','default_price_code'],
+        order_by='customer_name asc',
+
+    )
+    print(f"{keyword}")
+    return customer_list
+
 
 
