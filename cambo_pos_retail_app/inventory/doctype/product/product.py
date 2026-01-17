@@ -52,14 +52,17 @@ class Product(Document):
 			self.display_photo = self.photo
 		if not self.product_name_kh:
 			self.product_name_kh = self.product_name
+	
 		if self.auto_generate_barcode:
 			for price in self.product_prices:
 				if not price.barcode:
-					price.barcode =  f'{self.product_code}-{price.idx:02d}'
+					price.barcode =  f'{self.name}-{price.idx:02d}'
 		else:
 			for price in self.product_prices:
 				if not price.barcode:
 					frappe.throw(_("Please enter barcode for price list row {0}").format(price.idx))
+		product_group = frappe.db.get_value("Product Category",self.product_category,"parent_product_category")
+		self.product_group = product_group
 
 	def on_update(self):
 		delete_pos_product_sql = """
@@ -122,4 +125,12 @@ class Product(Document):
 					self.name = self.product_code
 				else:
 					frappe.throw(_("Please enter product code."))
+
+			for price in self.product_prices:
+				if not price.barcode:
+					price.barcode =  f'{self.name}-{price.idx:02d}'
+		else:
+			for price in self.product_prices:
+				if not price.barcode:
+					frappe.throw(_("Please enter barcode for price list row {0}").format(price.idx))
 

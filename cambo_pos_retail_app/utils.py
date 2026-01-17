@@ -175,16 +175,17 @@ def get_pos_config_info(pos_profile,terminal):
     product_categories = []
     product_categories = get_all_product_by_category(pos_profile,pos_profile_doc)
 
-    default_customer = frappe.db.get_value("Customer",branch.get("default_customer"),["phone","name","customer_name"],as_dict=1)
+    default_customer = frappe.db.get_value("Customer",branch.get("default_customer"),["phone","name","customer_name","customer_group"],as_dict=1)
     if not default_customer:
         default_customer = frappe.db.get_value("Customer","General Customer",["phone","name","customer_name"],as_dict=1)
 
+    exchange_rate = task = frappe.get_last_doc('Exchange Rate')
 
     pos_profile_response = {
                 "name":pos_profile_doc.get("name"),
                 "pos_profile_name":pos_profile_doc.get("pos_profile_name"),
                 "pos_config":pos_profile_doc.get("pos_config"),
-                
+                "price_code":pos_profile_doc.get("default_price_code"),
                 "permission_config":[ {"label":item.get("label"),"fieldname":item.get("fieldname"),"value":pos_profile_doc.get(item.get("fieldname"))}  for item in pos_profile_meta.get("fields") if  item.get("fieldtype") == "Check"  ],
                 "pos_config":{
                     "config_name":pos_config_doc.get("onfig_name"),
@@ -211,6 +212,7 @@ def get_pos_config_info(pos_profile,terminal):
              }  )
     return {
             "branch_name":branch.get("branch_name"),
+            "default_price":branch.get("default_price"),
             "default_customer_obj":default_customer,
             "default_customer":default_customer.name,
             "address":branch.get("address"),
@@ -221,6 +223,12 @@ def get_pos_config_info(pos_profile,terminal):
             "shifts":shifts,
             "customer_groups":customer_groups,
             "price_codes":price_codes,
+            "exchange_rate":{
+                "from":exchange_rate.get("from"),
+                "to":exchange_rate.get("to"),
+                "rate":exchange_rate.get("rate"),
+                "value":exchange_rate.get("exchange_value")
+            },
             "terminal":{
                     "name":terminal_doc.get("name"),
                     "terminal_name":terminal_doc.get("terminal_name")
@@ -231,6 +239,7 @@ def get_pos_config_info(pos_profile,terminal):
                 "can_open_day_before":pos_setting.get("can_open_day_before"),
                 "can_open_day_after":pos_setting.get("can_open_day_after"),
                 "main_currency":pos_setting.get("main_currency"),
+                "base_currency":pos_setting.get("base_currency"),
                 "main_currency_formatter":main_currency.get("number_format"),
                 "main_currency_symbol":main_currency.get("symbol"),
                 "main_currency_locale":main_currency.get("custom_locale"),
@@ -309,18 +318,14 @@ def get_product_for_pos(pos_profile=None):
 def get_customer_list_for_pos(keyword=None,page_length=25,start=1):
     filters = {'keyword': ['like', f'%{keyword}%']}
     customer_list = frappe.db.get_list('Customer',
-    filters=filters,
-    fields=['name', 'customer_name','phone','customer_group','default_price_code'],
-    order_by='customer_name asc',
-    page_length=page_length,
-    start=start
-)
-    print(f"{keyword}")
+        filters=filters,
+        fields=['name', 'customer_name','phone','customer_group','default_price_code'],
+        order_by='customer_name asc',
+        page_length=page_length,
+        start=start
+    )
+    print(customer_list)
     return customer_list
-
-@frappe.whitelist()
-def get_customer_by_code():
-    pass
 
 
 @frappe.whitelist()
@@ -331,10 +336,17 @@ def get_customer_by_keyword(keyword=None):
         filters=filters,
         fields=['name', 'customer_name','phone','customer_group','default_price_code'],
         order_by='customer_name asc',
-
     )
-    print(f"{keyword}")
+    print(f"customer {customer_list}")
     return customer_list
 
 
+@frappe.whitelist()
+def get_customer_by_name(name=None):
+    customer = frappe.db.get_value('Customer', name, ['name','customer_group','customer_name','phone'], as_dict=1)
+    if not customer:
+        frappe.local.response["http_status_code"] = 404
+        frappe.local.response["message"] = _(f"Customer {name} not found.")
+        return
 
+    frappe.local.response["message"] = customer

@@ -8,6 +8,7 @@
  "field_order": [
   "branch_name",
   "default_customer",
+  "default_price",
   "section_break_ohsr",
   "address",
   "phone",
@@ -52,12 +53,18 @@
    "fieldtype": "Link",
    "label": "Default Customer",
    "options": "Customer"
+  },
+  {
+   "fieldname": "default_price",
+   "fieldtype": "Link",
+   "label": "Default Price",
+   "options": "Price Code"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-12-29 11:11:22.112910",
+ "modified": "2026-01-03 13:52:25.537322",
  "modified_by": "Administrator",
  "module": "Config",
  "name": "Branch",

@@ -70,6 +70,7 @@
    "fieldname": "exchange_value",
    "fieldtype": "Float",
    "label": "Exchange Value",
+   "precision": "9",
    "read_only": 1
   },
   {
@@ -89,7 +90,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-08-15 18:30:48.283556",
+ "modified": "2026-01-03 15:43:51.969199",
  "modified_by": "Administrator",
  "module": "Config",
  "name": "Exchange Rate",
