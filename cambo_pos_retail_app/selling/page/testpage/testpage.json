@@ -1,0 +1,19 @@
+{
+ "content": null,
+ "creation": "2026-01-22 20:25:42.264555",
+ "docstatus": 0,
+ "doctype": "Page",
+ "idx": 0,
+ "modified": "2026-01-22 20:35:18.479211",
+ "modified_by": "Administrator",
+ "module": "Selling",
+ "name": "testpage",
+ "owner": "Administrator",
+ "page_name": "testpage",
+ "roles": [],
+ "script": null,
+ "standard": "Yes",
+ "style": null,
+ "system_page": 1,
+ "title": "Testing"
+}

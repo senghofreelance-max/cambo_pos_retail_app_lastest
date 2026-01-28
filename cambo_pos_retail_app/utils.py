@@ -324,7 +324,6 @@ def get_customer_list_for_pos(keyword=None,page_length=25,start=1):
         page_length=page_length,
         start=start
     )
-    print(customer_list)
     return customer_list
 
 
