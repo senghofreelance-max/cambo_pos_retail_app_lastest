@@ -8,7 +8,6 @@ def ping():
     frappe.local.response["message"] = {'text':_("server connected success"),'status':200}
 
 
-    
 @frappe.whitelist(allow_guest=True,methods="POST")
 def pos_login(usr="", pwd="",pos_profile=""):
     response_employee = {}
